@@ -28,103 +28,397 @@
             },
             colors: {
               brand: {
-                50: "#FFF9F5",
-                100: "#FFE6D8",
-                200: "#FFCEB2",
-                300: "#FFB089",
-                400: "#FF8F65",
-                500: "#F56950",
-                600: "#D65140",
-                700: "#B23E38",
-                800: "#84312F",
-                900: "#5B2527",
+                50: "#FFF7F5",
+                100: "#FFECEB",
+                200: "#FFD7E4",
+                300: "#FFBDD7",
+                400: "#FF9FC4",
+                500: "#FF84AF",
+                600: "#F06C96",
+                700: "#CF5078",
+                800: "#A63E60",
+                900: "#7D2D47",
               },
-              twilight: "#2B2140",
-              nightfall: "#1B1A2A",
+              twilight: "#181329",
+              nightfall: "#110D1D",
             },
             boxShadow: {
-              "brand-glow": "0 55px 160px -60px rgba(245, 105, 80, 0.45)",
+              "brand-glow": "0 40px 130px -60px rgba(255, 132, 175, 0.4)",
             },
           },
         },
       };
     </script>
-    <style>
-      html {
-        background-color: #131327;
-      }
-
-      body {
-        overscroll-behavior: none;
-        overflow-x: hidden;
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
-        -webkit-font-smoothing: antialiased;
-      }
-
-      @keyframes fade-up {
-        0% {
-          opacity: 0;
-          transform: translateY(16px);
+        <script>
+      (() => {
+        try {
+          const stored = localStorage.getItem('preferred-theme');
+          const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const theme = stored === 'dark' || stored === 'light' ? stored : (prefersDark ? 'dark' : 'light');
+          document.documentElement.dataset.theme = theme;
+        } catch (_) {
+          document.documentElement.dataset.theme = 'light';
         }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
+      })();
+    </script>
+<style>
+  :root {
+    --bg-page: #f8f5ff;
+    --fg-base: #1f1f35;
+    --fg-muted: #5e6585;
+    --surface: rgba(255, 255, 255, 0.98);
+    --surface-soft: rgba(245, 240, 255, 0.92);
+    --border: rgba(122, 107, 183, 0.16);
+    --shadow: 0 32px 90px -48px rgba(47, 36, 96, 0.35);
+    --accent-start: #ffb86b;
+    --accent-mid: #ff8fb1;
+    --accent-end: #8a9bff;
+    --accent-soft: rgba(255, 143, 177, 0.18);
+    --accent-strong: rgba(255, 143, 177, 0.32);
+    --chip-bg: rgba(255, 164, 198, 0.2);
+    --chip-fg: #4d2a63;
+  }
 
-      @keyframes float-soft {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-6px);
-        }
-      }
+  :root[data-theme="dark"] {
+    --bg-page: #101326;
+    --fg-base: #eef0ff;
+    --fg-muted: #b3bad9;
+    --surface: rgba(26, 31, 53, 0.94);
+    --surface-soft: rgba(34, 40, 67, 0.88);
+    --border: rgba(162, 148, 220, 0.24);
+    --shadow: 0 38px 110px -56px rgba(3, 6, 18, 0.74);
+    --accent-start: #8a9bff;
+    --accent-mid: #ff8fb1;
+    --accent-end: #ffb86b;
+    --accent-soft: rgba(255, 143, 177, 0.28);
+    --accent-strong: rgba(255, 184, 107, 0.32);
+    --chip-bg: rgba(255, 164, 198, 0.32);
+    --chip-fg: #fbeaff;
+  }
 
-      @keyframes glow {
-        0%,
-        100% {
-          box-shadow: 0 0 0 rgba(245, 105, 80, 0.2);
-        }
-        50% {
-          box-shadow: 0 0 35px rgba(255, 176, 137, 0.4);
-        }
-      }
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
 
-      .animate-fade-up {
-        animation: fade-up 0.8s ease-out both;
-      }
+  body {
+    background: var(--bg-page);
+    color: var(--fg-base);
+    overscroll-behavior: none;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
 
-      .animate-fade-up-delay {
-        animation: fade-up 0.9s ease-out 0.2s both;
-      }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 
-      .animate-float-soft {
-        animation: float-soft 4s ease-in-out infinite;
-      }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--chip-fg);
+  }
 
-      .animate-glow {
-        animation: glow 4s ease-in-out infinite;
-      }
-    </style>
+  .muted {
+    color: var(--fg-muted);
+  }
+
+  .surface {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 1.75rem;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(8px);
+  }
+
+  .surface-soft {
+    background: var(--surface-soft);
+    border: 1px solid var(--border);
+    border-radius: 1.75rem;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    background: var(--chip-bg);
+    color: var(--chip-fg);
+    border: 1px solid rgba(138, 155, 255, 0.22);
+  }
+
+  .accent-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 999px;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--accent-start), var(--accent-mid), var(--accent-end));
+    box-shadow: 0 22px 58px -28px rgba(242, 143, 183, 0.45);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .accent-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 28px 72px -32px rgba(242, 143, 183, 0.55);
+  }
+
+  .outline-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 999px;
+    font-weight: 600;
+    color: var(--fg-base);
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(6px);
+    transition: transform 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  }
+
+  .outline-btn:hover {
+    transform: translateY(-1px);
+    border-color: rgba(255, 143, 177, 0.4);
+    color: var(--accent-mid);
+  }
+
+  :root[data-theme="dark"] .outline-btn {
+    background: rgba(26, 31, 53, 0.82);
+  }
+
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--fg-base);
+    box-shadow: 0 18px 48px -34px rgba(242, 143, 183, 0.36);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .theme-toggle:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 26px 70px -38px rgba(242, 143, 183, 0.46);
+  }
+
+  .theme-toggle svg {
+    width: 1rem;
+    height: 1rem;
+    fill: none;
+    stroke: var(--accent-mid);
+  }
+
+  .brand-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.5rem 1.15rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--accent-end);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+  }
+
+  :root[data-theme="dark"] .brand-pill {
+    background: rgba(25, 30, 53, 0.85);
+  }
+
+  .brand-pill:hover {
+    border-color: rgba(255, 143, 177, 0.38);
+    color: var(--accent-mid);
+  }
+
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.45rem 0.95rem;
+    border-radius: 0.85rem;
+    border: 1px solid transparent;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .nav-link:hover {
+    background: var(--accent-soft);
+    color: var(--accent-mid);
+  }
+
+  .nav-link-active {
+    background: var(--accent-strong);
+    color: var(--fg-base);
+  }
+
+  :root[data-theme="dark"] .nav-link-active {
+    background: var(--accent-strong);
+    color: #fdf2ff;
+  }
+
+  .hub-panel {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 100%;
+    gap: 0;
+  }
+
+  .panel-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 1.75rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface-soft);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .workspace-gradient {
+    background: linear-gradient(135deg, rgba(255, 184, 107, 0.22), rgba(255, 143, 177, 0.28) 55%, rgba(138, 155, 255, 0.26));
+    transition: background 0.35s ease;
+  }
+
+  :root[data-theme="dark"] .workspace-gradient {
+    background: linear-gradient(135deg, rgba(138, 155, 255, 0.28), rgba(255, 143, 177, 0.32) 50%, rgba(255, 184, 107, 0.2));
+  }
+
+  .drawer-panel {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    backdrop-filter: blur(16px);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .nav-toggle {
+    width: 2.75rem;
+    height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--fg-base);
+    transition: transform 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  }
+
+  .nav-toggle:hover {
+    transform: translateY(-1px);
+    border-color: rgba(255, 143, 177, 0.4);
+    color: var(--accent-mid);
+  }
+
+  .header-bar {
+    background: rgba(255, 255, 255, 0.86);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(18px);
+  }
+
+  :root[data-theme="dark"] .header-bar {
+    background: rgba(17, 19, 35, 0.85);
+  }
+
+  .footer-bar {
+    background: rgba(250, 248, 255, 0.9);
+    border-top: 1px solid var(--border);
+  }
+
+  :root[data-theme="dark"] .footer-bar {
+    background: rgba(15, 18, 32, 0.84);
+  }
+
+  @keyframes fade-up {
+    0% {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float-soft {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+
+  @keyframes glow {
+    0%,
+    100% {
+      box-shadow: 0 0 0 rgba(255, 143, 177, 0.22);
+    }
+    50% {
+      box-shadow: 0 0 35px rgba(255, 184, 107, 0.32);
+    }
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.35s ease-out both;
+  }
+
+  .animate-fade-up-delay {
+    animation: fade-up 0.45s ease-out 0.1s both;
+  }
+
+  .animate-float-soft {
+    animation: float-soft 4s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 4s ease-in-out infinite;
+  }
+
+  .glow-shell {
+    position: relative;
+  }
+
+  .glow-shell::before {
+    content: "";
+    position: absolute;
+    inset: -60px;
+    background:
+      radial-gradient(circle at 20% 15%, rgba(255, 143, 177, 0.35), transparent 60%),
+      radial-gradient(circle at 80% 35%, rgba(138, 155, 255, 0.28), transparent 60%);
+    filter: blur(80px);
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .glow-shell > .surface {
+    position: relative;
+    z-index: 1;
+  }
+</style>
     <script defer src="assets/app.js"></script>
+
   </head>
-  <body
-    class="min-h-screen bg-gradient-to-br from-[#131327] via-[#1d1a33] to-[#2e1f2c] text-slate-100"
-  >
-    <header
-      class="sticky top-0 z-30 border-b border-white/10 bg-slate-950/75 backdrop-blur-xl"
-    >
-      <nav
-        class="mx-auto flex w-full max-w-[110rem] items-center gap-4 px-8 py-5"
-      >
-        <a
-          class="flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 transition hover:border-brand-400/60 hover:text-white"
-          href="#home"
-          data-route-link="home"
-        >
+  <body class="min-h-screen font-sans transition-colors duration-200">
+    <header class="header-bar sticky top-0 z-30">
+      <nav class="mx-auto flex w-full max-w-[110rem] items-center gap-4 px-8 py-5">
+        <a class="brand-pill" href="#home">
           <img
             src="assets/logo.svg"
             alt="Company emblem"
@@ -133,53 +427,54 @@
           <span class="sr-only">Home</span>
         </a>
         <button
-          class="ml-auto flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 lg:hidden"
+          type="button"
+          class="nav-toggle ml-auto lg:hidden"
           aria-label="Toggle navigation"
           aria-expanded="false"
           data-nav-toggle
         >
           <span class="sr-only">Toggle navigation</span>
-          <svg class="h-6 w-6 text-slate-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
             stroke="currentColor" stroke-width="1.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
         </button>
         <div
-          class="hidden items-center gap-2 text-sm font-medium text-slate-200 lg:flex"
+          class="hidden items-center gap-2 text-sm font-medium lg:ml-auto lg:flex"
           data-nav-links
         >
-          <a class="rounded-xl border border-transparent px-3 py-2 transition hover:bg-white/10" href="#home" data-route-link="home">
+          <a class="nav-link" href="#home" data-route-link="home">
             Overview
           </a>
-          <a class="rounded-xl border border-transparent px-3 py-2 transition hover:bg-white/10" href="#capabilities" data-route-link="capabilities">
+          <a class="nav-link" href="#capabilities" data-route-link="capabilities">
             Capabilities
           </a>
-          <a class="rounded-xl border border-transparent px-3 py-2 transition hover:bg-white/10" href="#workflow" data-route-link="workflow">
+          <a class="nav-link" href="#workflow" data-route-link="workflow">
             Workflow
           </a>
-          <a class="rounded-xl border border-transparent px-3 py-2 transition hover:bg-white/10" href="#insights" data-route-link="insights">
+          <a class="nav-link" href="#insights" data-route-link="insights">
             Insights
           </a>
-          <a class="rounded-xl border border-transparent px-3 py-2 transition hover:bg-white/10" href="#faq" data-route-link="faq">
+          <a class="nav-link" href="#faq" data-route-link="faq">
             FAQ
           </a>
         </div>
       </nav>
-      <div class="hidden border-t border-white/10 bg-slate-950/90 px-6 py-4 lg:hidden" data-nav-drawer>
-        <div class="flex flex-col gap-3 text-base font-medium text-slate-200">
-          <a class="rounded-xl border border-transparent px-4 py-2 transition hover:bg-white/10" href="#home" data-route-link="home">
+      <div class="drawer-panel hidden px-6 py-4 lg:hidden" data-nav-drawer>
+        <div class="flex flex-col gap-2 text-base font-medium">
+          <a class="nav-link justify-center" href="#home" data-route-link="home">
             Overview
           </a>
-          <a class="rounded-xl border border-transparent px-4 py-2 transition hover:bg-white/10" href="#capabilities" data-route-link="capabilities">
+          <a class="nav-link justify-center" href="#capabilities" data-route-link="capabilities">
             Capabilities
           </a>
-          <a class="rounded-xl border border-transparent px-4 py-2 transition hover:bg-white/10" href="#workflow" data-route-link="workflow">
+          <a class="nav-link justify-center" href="#workflow" data-route-link="workflow">
             Workflow
           </a>
-          <a class="rounded-xl border border-transparent px-4 py-2 transition hover:bg-white/10" href="#insights" data-route-link="insights">
+          <a class="nav-link justify-center" href="#insights" data-route-link="insights">
             Insights
           </a>
-          <a class="rounded-xl border border-transparent px-4 py-2 transition hover:bg-white/10" href="#faq" data-route-link="faq">
+          <a class="nav-link justify-center" href="#faq" data-route-link="faq">
             FAQ
           </a>
         </div>
@@ -187,42 +482,60 @@
     </header>
 
     <main class="mx-auto flex w-full max-w-[110rem] flex-col gap-14 px-4 pb-24 pt-16 sm:gap-16 sm:px-6 lg:px-8 lg:pb-28 lg:pt-28">
-      <section
-        class="animate-fade-up flex min-h-[60vh] items-stretch justify-center rounded-[36px] border border-white/10 bg-white/10 p-10 shadow-brand-glow backdrop-blur-sm lg:p-16"
-      >
-        <div
-          class="flex w-full flex-col overflow-hidden rounded-[28px] border border-white/10 bg-slate-950/70 backdrop-blur-lg"
-        >
-          <div class="flex items-center justify-between border-b border-white/10 px-6 py-4">
-            <div class="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.26em] text-brand-200">
+      <section class="animate-fade-up flex min-h-[60vh] items-stretch justify-center">
+        <div class="surface hub-panel rounded-[32px] lg:rounded-[36px]">
+          <div class="panel-bar">
+            <div class="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.26em]">
               <span class="grid h-9 w-9 place-items-center">
                 <img src="assets/badge.svg" alt="Companion badge" class="h-9 w-9" />
               </span>
               Companion stream
             </div>
-            <span class="text-xs text-slate-400">Simulated journey preview</span>
+            <span class="muted text-xs">Simulated journey preview</span>
           </div>
           <div
-            class="flex-1 overflow-y-auto bg-gradient-to-br from-[#151429] via-[#1f1a31] to-[#3a1f31]/70 p-10 text-slate-100"
+            class="workspace-gradient flex-1 overflow-y-auto p-8 text-base transition-colors sm:p-10"
             id="route-outlet"
           >
-            <div class="grid h-full place-items-center text-center text-sm text-slate-400">
+            <div class="grid h-full place-items-center text-center text-sm muted">
               Loading content…
             </div>
           </div>
         </div>
       </section>
-    </main>
 
-    <footer class="border-t border-white/10 bg-slate-950/80 py-10">
-      <div class="mx-auto flex w-full max-w-[110rem] flex-col gap-4 px-8 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
-        <p class="tracking-wide">
+    </main>
+    <footer class="footer-bar py-10">
+      <div class="mx-auto flex w-full max-w-[110rem] flex-col gap-4 px-8 text-sm md:flex-row md:items-center md:justify-between">
+        <p class="muted tracking-wide">
           &copy; <span id="copyright-year"></span> All rights reserved
         </p>
-        <div class="flex gap-4">
-          <a class="transition hover:text-brand-200" href="#capabilities" data-route-link="capabilities">Product</a>
-          <a class="transition hover:text-brand-200" href="#workflow" data-route-link="workflow">Flow</a>
-          <a class="transition hover:text-brand-200" href="#insights" data-route-link="insights">Insights</a>
+        <div class="flex flex-wrap items-center gap-3">
+          <div class="flex gap-2">
+            <a class="nav-link" href="#capabilities" data-route-link="capabilities">Product</a>
+            <a class="nav-link" href="#workflow" data-route-link="workflow">Flow</a>
+            <a class="nav-link" href="#insights" data-route-link="insights">Insights</a>
+          </div>
+          <button
+            type="button"
+            aria-pressed="false"
+            class="theme-toggle"
+            aria-label="Toggle theme"
+            data-theme-toggle
+          >
+            <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3v2" />
+              <path d="M5.63 6.36l1.41 1.41" />
+              <path d="M3 12h2" />
+              <path d="M5.63 17.64l1.41-1.41" />
+              <path d="M12 19v2" />
+              <path d="M17.36 16.23l1.41 1.41" />
+              <path d="M19 12h2" />
+              <path d="M17.36 7.77l1.41-1.41" />
+              <circle cx="12" cy="12" r="4" />
+            </svg>
+            <span>Dark mode</span>
+          </button>
         </div>
       </div>
     </footer>

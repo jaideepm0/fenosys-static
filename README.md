@@ -40,3 +40,7 @@ python static/serve.py --host 127.0.0.1 --port 5173
 ```
 
 It serves the same files while gracefully ignoring broken-pipe events.
+
+## Theme toggle
+
+A theme switcher lives near the bottom of the landing page. The site remembers the selected light or dark mode in `localStorage`, while still honouring OS-level preferences for first-time visitors.

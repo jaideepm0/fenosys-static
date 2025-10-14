@@ -1,145 +1,179 @@
-const DEFAULT_ROUTE = "home";
-const ROUTES = {
-  home: "pages/home.html",
-  capabilities: "pages/capabilities.html",
-  workflow: "pages/workflow.html",
-  insights: "pages/insights.html",
-  faq: "pages/faq.html",
-};
+(() => {
+  const DEFAULT_ROUTE = "home";
+  const ROUTES = {
+    home: "pages/home.html",
+    capabilities: "pages/capabilities.html",
+    workflow: "pages/workflow.html",
+    insights: "pages/insights.html",
+    faq: "pages/faq.html",
+  };
 
-const outlet = document.getElementById("route-outlet");
-const navLinks = Array.from(document.querySelectorAll("[data-route-link]"));
-const navToggle = document.querySelector("[data-nav-toggle]");
-const navDrawer = document.querySelector("[data-nav-drawer]");
-const navInline = document.querySelector("[data-nav-links]");
+  const outlet = document.getElementById("route-outlet");
+  const navLinks = Array.from(document.querySelectorAll("[data-route-link]"));
+  const navToggle = document.querySelector("[data-nav-toggle]");
+  const navDrawer = document.querySelector("[data-nav-drawer]");
+  const navInline = document.querySelector("[data-nav-links]");
+  const themeToggle = document.querySelector("[data-theme-toggle]");
+  const themeToggleLabel = themeToggle?.querySelector("span");
 
-const routeCache = new Map();
+  const storageKey = "preferred-theme";
+  const routeCache = new Map();
 
-const markActiveLink = (route) => {
-  navLinks.forEach((link) => {
-    const linkRoute = link.getAttribute("data-route-link");
-    if (!linkRoute) return;
-    const isActive = linkRoute === route;
-    link.classList.toggle("bg-brand-500/20", isActive);
-    link.classList.toggle("text-white", isActive);
-    link.classList.toggle("border", isActive);
-    link.classList.toggle("border-brand-400/50", isActive);
-    if (isActive) {
-      link.setAttribute("aria-current", "page");
-    } else {
-      link.removeAttribute("aria-current");
-    }
-  });
-};
+  const applyTheme = (theme) => {
+    const value = theme === "dark" ? "dark" : "light";
+    document.documentElement.dataset.theme = value;
+    if (themeToggleLabel) themeToggleLabel.textContent = value === "dark" ? "Light mode" : "Dark mode";
+    themeToggle?.setAttribute("aria-pressed", value === "dark" ? "true" : "false");
+  };
 
-const loadRoute = async (route) => {
-  const target = ROUTES[route] ? route : DEFAULT_ROUTE;
-  const resource = ROUTES[target];
-  if (!resource || !outlet) return;
+  const resolveTheme = () => {
+    const stored = localStorage.getItem(storageKey);
+    if (stored === "dark" || stored === "light") return stored;
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  };
 
-  markActiveLink(target);
+  const setTheme = (theme) => {
+    applyTheme(theme);
+    localStorage.setItem(storageKey, theme);
+  };
 
-  if (routeCache.has(resource)) {
-    outlet.innerHTML = routeCache.get(resource);
-    return;
-  }
+  const highlightNav = (route) => {
+    navLinks.forEach((link) => {
+      const isActive = link.getAttribute("data-route-link") === route;
+      if (link.classList.contains("nav-link")) {
+        link.classList.toggle("nav-link-active", isActive);
+        if (isActive) {
+          link.setAttribute("aria-current", "page");
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      } else {
+        link.classList.remove("nav-link-active");
+        link.removeAttribute("aria-current");
+      }
+    });
+  };
 
-  try {
-    const response = await fetch(resource);
-    if (!response.ok) {
-      throw new Error(`Failed to fetch ${resource}`);
-    }
-    const html = await response.text();
-    routeCache.set(resource, html);
-    outlet.innerHTML = html;
-  } catch (error) {
-    const advisory =
-      window.location.protocol === "file:"
-        ? "Run this site with a local web server (for example: python3 -m http.server --directory static 5173) so routed pages can load."
-        : "Please refresh or try again in a moment.";
-    outlet.innerHTML = `
-      <div class="grid h-full place-items-center text-center">
-        <div class="max-w-sm space-y-3 rounded-2xl border border-white/10 bg-white/5 px-6 py-8 text-sm text-slate-200">
-          <p class="font-semibold text-white">Something went wrong</p>
-          <p class="text-slate-300">${error.message}</p>
-          <p class="text-slate-400">${advisory}</p>
+  const render = (html) => {
+    if (outlet) outlet.innerHTML = html;
+  };
+
+  const renderError = (message) => {
+    render(`
+      <div class="flex h-full items-center justify-center">
+        <div class="surface-soft max-w-sm space-y-3 rounded-2xl p-6 text-sm">
+          <p class="font-semibold">Something went wrong</p>
+          <p class="muted">${message}</p>
         </div>
       </div>
-    `;
-  }
-};
+    `);
+  };
 
-const setNavState = (isOpen) => {
-  if (!navDrawer) return;
-  if (isOpen) {
-    navDrawer.classList.remove("hidden");
-  } else {
-    navDrawer.classList.add("hidden");
-  }
-  navToggle?.setAttribute("aria-expanded", String(Boolean(isOpen)));
-};
+  const fetchRoute = async (resource) => {
+    if (routeCache.has(resource)) return routeCache.get(resource);
+    const response = await fetch(resource, { cache: "no-cache" });
+    if (!response.ok) throw new Error(`Failed to fetch ${resource}`);
+    const html = await response.text();
+    routeCache.set(resource, html);
+    return html;
+  };
 
-const closeNav = () => setNavState(false);
-
-const navigate = (route) => {
-  const target = ROUTES[route] ? route : DEFAULT_ROUTE;
-  if (window.location.hash === `#${target}`) {
-    loadRoute(target);
-  } else {
-    window.location.hash = `#${target}`;
-  }
-};
-
-const handleRouteChange = () => {
-  const route = window.location.hash.replace("#", "") || DEFAULT_ROUTE;
-  loadRoute(route);
-  closeNav();
-};
-
-navLinks.forEach((link) => {
-  link.addEventListener("click", (event) => {
-    const route = link.getAttribute("data-route-link");
-    if (!route) return;
-    event.preventDefault();
-    navigate(route);
-    closeNav();
-  });
-});
-
-navToggle?.addEventListener("click", () => {
-  const isExpanded = navToggle.getAttribute("aria-expanded") === "true";
-  setNavState(!isExpanded);
-});
-
-window.addEventListener("hashchange", handleRouteChange);
-window.addEventListener("load", handleRouteChange);
-
-if (!window.location.hash) {
-  history.replaceState({}, "", `#${DEFAULT_ROUTE}`);
-}
-
-const yearEl = document.getElementById("copyright-year");
-if (yearEl) {
-  yearEl.textContent = new Date().getFullYear();
-}
-
-if (navToggle) {
-  navToggle.setAttribute("aria-expanded", "false");
-}
-
-if (window.matchMedia) {
-  const mediaQuery = window.matchMedia("(min-width: 1024px)");
-  const syncNav = (event) => {
-    if (event.matches) {
-      navDrawer?.classList.add("hidden");
-      navInline?.classList.add("lg:flex");
-      navInline?.classList.remove("hidden");
-      navToggle?.setAttribute("aria-expanded", "false");
-    } else {
-      navInline?.classList.remove("lg:flex");
-      navInline?.classList.add("hidden");
+  const loadRoute = async (route) => {
+    const target = ROUTES[route] ? route : DEFAULT_ROUTE;
+    const resource = ROUTES[target];
+    highlightNav(target);
+    try {
+      const html = await fetchRoute(resource);
+      render(html);
+    } catch (error) {
+      renderError(error.message ?? "Unable to load content");
     }
   };
-  syncNav(mediaQuery);
-  mediaQuery.addEventListener("change", syncNav);
-}
+
+  const handleNavLink = (event, route) => {
+    event.preventDefault();
+    if (!route) return;
+    if (window.location.hash === `#${route}`) {
+      loadRoute(route);
+    } else {
+      window.location.hash = `#${route}`;
+    }
+  };
+
+  navLinks.forEach((link) => {
+    const route = link.getAttribute("data-route-link");
+    link.addEventListener("click", (event) => handleNavLink(event, route));
+  });
+
+  navToggle?.addEventListener("click", () => {
+    const expanded = navToggle.getAttribute("aria-expanded") === "true";
+    navToggle.setAttribute("aria-expanded", String(!expanded));
+    navDrawer?.classList.toggle("hidden", expanded);
+  });
+
+  const handleRouteChange = () => {
+    const route = window.location.hash.replace("#", "") || DEFAULT_ROUTE;
+    loadRoute(route);
+    if (navDrawer && !navDrawer.classList.contains("hidden")) {
+      navDrawer.classList.add("hidden");
+      navToggle?.setAttribute("aria-expanded", "false");
+    }
+  };
+
+  window.addEventListener("hashchange", handleRouteChange);
+
+  themeToggle?.addEventListener("click", () => {
+    const current = document.documentElement.dataset.theme || resolveTheme();
+    const next = current === "dark" ? "light" : "dark";
+    setTheme(next);
+  });
+
+  const systemQuery = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+  if (systemQuery) {
+    const syncSystemPreference = (event) => {
+      const stored = localStorage.getItem(storageKey);
+      if (!stored) applyTheme(event.matches ? "dark" : "light");
+    };
+    if (typeof systemQuery.addEventListener === "function") {
+      systemQuery.addEventListener("change", syncSystemPreference);
+    } else if (typeof systemQuery.addListener === "function") {
+      systemQuery.addListener(syncSystemPreference);
+    }
+  }
+
+  const preloadRoutes = () => {
+    Object.entries(ROUTES).forEach(([route, resource]) => {
+      if (route === DEFAULT_ROUTE || routeCache.has(resource)) return;
+      fetch(resource, { cache: "no-cache" })
+        .then((response) => (response.ok ? response.text() : Promise.reject()))
+        .then((html) => routeCache.set(resource, html))
+        .catch(() => {});
+    });
+  };
+
+  const syncNavWithViewport = () => {
+    if (!navInline || !navDrawer) return;
+    const mediaQuery = window.matchMedia("(min-width: 1024px)");
+    const update = (event) => {
+      if (event.matches) {
+        navDrawer.classList.add("hidden");
+        navToggle?.setAttribute("aria-expanded", "false");
+      }
+    };
+    if (typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener("change", update);
+    } else if (typeof mediaQuery.addListener === "function") {
+      mediaQuery.addListener(update);
+    }
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    applyTheme(resolveTheme());
+    const yearEl = document.getElementById("copyright-year");
+    if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+    if (!window.location.hash) window.location.replace(`#${DEFAULT_ROUTE}`);
+    handleRouteChange();
+    syncNavWithViewport();
+    (window.requestIdleCallback || ((fn) => setTimeout(fn, 200)))(preloadRoutes);
+  });
+})();

@@ -1,102 +1,92 @@
-<div class="animate-fade-up space-y-14">
-  <header class="space-y-5 max-w-4xl">
-    <p class="text-xs font-semibold uppercase tracking-[0.28em] text-brand-200/80">
-      Insight intelligence
-    </p>
-    <h2 class="text-3xl font-semibold text-white sm:text-4xl">
+<div class="space-y-16">
+  <header class="space-y-4 max-w-3xl">
+    <p class="eyebrow">Insight intelligence</p>
+    <h2 class="text-3xl font-semibold leading-tight sm:text-4xl">
       Dashboards stay alive with narrative context, not just charts.
     </h2>
-    <p class="text-base leading-relaxed text-slate-200">
+    <p class="muted">
       Usage, quality, and momentum are measured together. The companion reveals where attention goes, which prompts deliver impact,
-      and how costs are trending—all while linking back to the exact conversations that created the insight.
+      and how costs are trending—all while linking back to the exact conversations that created each insight.
     </p>
   </header>
 
   <div class="grid gap-6 lg:grid-cols-[1.35fr,0.75fr]">
-    <article class="flex h-full flex-col gap-6 rounded-3xl border border-white/10 bg-gradient-to-br from-brand-300/18 via-brand-100/12 to-brand-800/20 p-6 shadow-2xl shadow-brand-900/25">
-      <div class="flex items-center justify-between text-xs uppercase tracking-[0.24em] text-brand-200">
-        Companion analytics
-        <span class="rounded-full bg-brand-300/25 px-3 py-1 text-[0.65rem] font-semibold text-brand-50">Live view</span>
+    <article class="surface space-y-6 rounded-3xl p-6">
+      <div class="flex items-center justify-between text-xs uppercase tracking-[0.24em]">
+        <span class="muted">Companion analytics</span>
+        <span class="chip">Live view</span>
       </div>
-      <p class="text-sm text-slate-100/90">
-        Trace the health of sessions, prompts, API fetches, and downstream actions. Filter by team, data domain, or campaign and understand how the assistant
-        is amplifying impact across the organisation.
+      <p class="muted text-sm">
+        Trace the health of sessions, prompts, API fetches, and downstream actions. Filter by team, data domain, or campaign and understand how the assistant amplifies impact.
       </p>
-      <dl class="grid gap-4 rounded-2xl border border-white/10 bg-slate-950/70 p-6 text-sm text-slate-200 sm:grid-cols-3">
+      <dl class="surface-soft grid gap-4 rounded-2xl p-6 text-sm sm:grid-cols-3">
         <div>
-          <dt class="text-xs uppercase tracking-[0.24em] text-slate-400/80">Insight turnarounds</dt>
-          <dd class="mt-2 text-2xl font-semibold text-brand-100">4.6× faster</dd>
+          <dt class="muted text-xs uppercase tracking-[0.2em]">Insight turnarounds</dt>
+          <dd class="mt-2 text-2xl font-semibold">4.6× faster</dd>
         </div>
         <div>
-          <dt class="text-xs uppercase tracking-[0.24em] text-slate-400/80">Follow-up adoption</dt>
-          <dd class="mt-2 text-2xl font-semibold text-brand-100">78% actions</dd>
+          <dt class="muted text-xs uppercase tracking-[0.2em]">Follow-up adoption</dt>
+          <dd class="mt-2 text-2xl font-semibold">78% actions</dd>
         </div>
         <div>
-          <dt class="text-xs uppercase tracking-[0.24em] text-slate-400/80">LLM cost per run</dt>
-          <dd class="mt-2 text-2xl font-semibold text-brand-100">$0.05 - $0.10</dd>
+          <dt class="muted text-xs uppercase tracking-[0.2em]">LLM cost per run</dt>
+          <dd class="mt-2 text-2xl font-semibold">$0.05–$0.10</dd>
         </div>
       </dl>
-      <div class="grid gap-4 rounded-2xl border border-white/10 bg-white/10 p-6 text-sm text-slate-200">
-        <p class="font-semibold text-white">Narrative snapshots</p>
-        <p class="leading-relaxed text-slate-300">
-          Each card blends metrics with the conversation that produced them. Jump directly to the prompt, the transformation plan,
-          or the async worker run that impacted the result.
+      <div class="surface-soft rounded-2xl p-6 text-sm">
+        <p class="font-semibold">Narrative snapshots</p>
+        <p class="muted mt-2">
+          Each card blends metrics with the conversation that produced them. Jump directly to the prompt, the transformation plan, or the async worker run driving the result.
         </p>
       </div>
     </article>
-    <article class="flex h-full flex-col gap-5 rounded-3xl border border-white/10 bg-white/10 p-6 shadow-lg shadow-brand-900/25">
-      <div class="flex items-center justify-between text-xs uppercase tracking-[0.24em] text-slate-200">
-        Automation health
-        <span class="rounded-full bg-white/15 px-3 py-1 text-[0.65rem] font-semibold text-white/80">Steady</span>
+
+    <article class="surface space-y-5 rounded-3xl p-6">
+      <div class="flex items-center justify-between text-xs uppercase tracking-[0.24em]">
+        <span class="muted">Automation health</span>
+        <span class="chip">Steady</span>
       </div>
-      <p class="text-sm text-slate-200">
-        Monitor worker queues, job retries, API polling cadence, and refresh cycles. When the companion escalates a heavy task, you can see the outcome and cost impact immediately.
+      <p class="muted text-sm">
+        Monitor worker queues, job retries, polling cadence, and refresh cycles. When the companion escalates a heavy task, you can see the outcome and cost impact immediately.
       </p>
-      <ul class="space-y-3 text-sm text-slate-200">
-        <li class="flex items-center justify-between rounded-2xl border border-white/10 bg-slate-950/60 px-4 py-3">
-          Ingestion enrichments <span class="text-brand-100">Flowing</span>
+      <ul class="space-y-3 text-sm">
+        <li class="surface-soft rounded-2xl px-4 py-3 flex items-center justify-between">
+          <span class="muted">Ingestion enrichments</span><span class="font-semibold text-[var(--accent-mid)]">Flowing</span>
         </li>
-        <li class="flex items-center justify-between rounded-2xl border border-white/10 bg-slate-950/60 px-4 py-3">
-          Worker retries <span class="text-amber-200">Minimal</span>
+        <li class="surface-soft rounded-2xl px-4 py-3 flex items-center justify-between">
+          <span class="muted">Worker retries</span><span class="font-semibold text-[var(--accent-mid)]">Minimal</span>
         </li>
-        <li class="flex items-center justify-between rounded-2xl border border-white/10 bg-slate-950/60 px-4 py-3">
-          Narrative pushes <span class="text-teal-200">On schedule</span>
+        <li class="surface-soft rounded-2xl px-4 py-3 flex items-center justify-between">
+          <span class="muted">Narrative pushes</span><span class="font-semibold text-[var(--accent-mid)]">On schedule</span>
         </li>
       </ul>
-      <p class="rounded-2xl border border-white/10 bg-slate-950/70 p-4 text-xs text-slate-300">
-        Configure alerts to ping the right channel when usage spikes, cost budgets are close, or momentum slips.
+      <p class="surface-soft rounded-2xl p-5 text-xs text-[var(--fg-muted)]">
+        Configure alerts to nudge the right channel when usage spikes, costs approach thresholds, or momentum drifts.
       </p>
     </article>
   </div>
 
-  <div class="grid gap-8 rounded-3xl border border-white/10 bg-white/10 p-10 shadow-xl shadow-brand-900/20 lg:grid-cols-[1.1fr,0.9fr]">
-    <div class="space-y-4">
-      <p class="text-xs font-semibold uppercase tracking-[0.26em] text-brand-200/80">Story-first delivery</p>
-      <h3 class="text-2xl font-semibold text-white">Insights arrive as briefings your stakeholders can act on.</h3>
-      <p class="text-base leading-relaxed text-slate-200">
-        The companion pairs each data update with language crafted for the audience it serves—operators, executives, or partners.
-        It cites sources, anticipates objections, and recommends next moves grounded in data pulled from files, APIs, and authorised web captures.
+  <section class="surface grid gap-6 rounded-3xl p-10 lg:grid-cols-[1.1fr,0.9fr]">
+    <div class="space-y-3">
+      <p class="eyebrow">Story-first delivery</p>
+      <h3 class="text-2xl font-semibold">Insights arrive as briefings your stakeholders can act on.</h3>
+      <p class="muted">
+        The companion pairs each data update with language crafted for the audience it serves. It cites sources, anticipates objections, and recommends next moves grounded in data pulled from files, APIs, and authorised web captures.
       </p>
     </div>
-    <ul class="grid gap-4 text-sm text-slate-200">
-      <li class="rounded-2xl border border-white/10 bg-slate-950/60 p-5">
-        <span class="text-xs font-semibold uppercase tracking-[0.24em] text-brand-200">Contextual recall</span>
-        <p class="mt-2">
-          Jump from a chart back to the conversation that birthed it. Every insight is linked to prompts, transformations, API calls, and worker outputs.
-        </p>
+    <ul class="grid gap-4 text-sm">
+      <li class="surface-soft rounded-2xl p-5 space-y-2">
+        <span class="font-semibold">Contextual recall</span>
+        <p class="muted">Jump from a chart back to the conversation that birthed it. Every insight links to prompts, transformations, API calls, and worker outputs.</p>
       </li>
-      <li class="rounded-2xl border border-white/10 bg-slate-950/60 p-5">
-        <span class="text-xs font-semibold uppercase tracking-[0.24em] text-brand-200">Audience tuning</span>
-        <p class="mt-2">
-          Toggle tone and depth per audience while preserving the underlying facts. The assistant rewrites copy instantly.
-        </p>
+      <li class="surface-soft rounded-2xl p-5 space-y-2">
+        <span class="font-semibold">Audience tuning</span>
+        <p class="muted">Toggle tone and depth per audience while preserving the underlying facts. The assistant rewrites copy instantly.</p>
       </li>
-      <li class="rounded-2xl border border-white/10 bg-slate-950/60 p-5">
-        <span class="text-xs font-semibold uppercase tracking-[0.24em] text-brand-200">Momentum archive</span>
-        <p class="mt-2">
-          Review how decisions evolved over time, identify seasonal patterns, and spotlight the conversations that moved the needle most.
-        </p>
+      <li class="surface-soft rounded-2xl p-5 space-y-2">
+        <span class="font-semibold">Momentum archive</span>
+        <p class="muted">Review how decisions evolved over time, identify seasonal patterns, and spotlight the conversations that moved the needle most.</p>
       </li>
     </ul>
-  </div>
+  </section>
 </div>

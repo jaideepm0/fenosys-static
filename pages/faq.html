@@ -1,65 +1,55 @@
-<div class="animate-fade-up-delay space-y-14">
-  <header class="space-y-5 max-w-4xl">
-    <p class="text-xs font-semibold uppercase tracking-[0.28em] text-brand-200/80">
-      Companion essentials
-    </p>
-    <h2 class="text-3xl font-semibold text-white sm:text-4xl">
-      Answers to the questions teams ask before adopting the assistant.
+<div class="space-y-16">
+  <header class="space-y-4 max-w-3xl">
+    <p class="eyebrow">Companion essentials</p>
+    <h2 class="text-3xl font-semibold leading-tight sm:text-4xl">
+      Questions teams ask before adopting the assistant.
     </h2>
   </header>
 
   <div class="grid gap-6 lg:grid-cols-3">
-    <article class="flex h-full flex-col gap-4 rounded-3xl border border-white/10 bg-white/10 p-6 shadow-lg shadow-brand-900/25">
-      <h3 class="text-lg font-semibold text-white">How does the companion understand our intent?</h3>
-      <p class="text-sm leading-relaxed text-slate-200">
-        Prompt blueprints guide the LLM with domain vocabulary, metrics, and safe defaults. FastAPI services inject user context,
-        so suggestions stay relevant and compliant without custom scripting.
+    <article class="surface space-y-3 rounded-3xl p-6">
+      <h3 class="text-lg font-semibold">How does the companion understand our intent?</h3>
+      <p class="muted text-sm">
+        Prompt blueprints guide the LLM with domain vocabulary, metrics, and safe defaults. FastAPI services inject user context so suggestions stay relevant and compliant.
       </p>
     </article>
-    <article class="flex h-full flex-col gap-4 rounded-3xl border border-white/10 bg-white/10 p-6 shadow-lg shadow-brand-900/25">
-      <h3 class="text-lg font-semibold text-white">Will it respect our data governance rules?</h3>
-      <p class="text-sm leading-relaxed text-slate-200">
-        Yes. Access policies live in the API layer, DuckDB connections are scoped per session, and workers operate with scoped secrets.
-        Every action is recorded in an audit trail you can export.
+    <article class="surface space-y-3 rounded-3xl p-6">
+      <h3 class="text-lg font-semibold">Will it respect our data governance rules?</h3>
+      <p class="muted text-sm">
+        Yes. Access policies live in the API layer, DuckDB connections are scoped per session, and workers operate with scoped secrets. Every action lands in an audit trail.
       </p>
     </article>
-    <article class="flex h-full flex-col gap-4 rounded-3xl border border-white/10 bg-white/10 p-6 shadow-lg shadow-brand-900/25">
-      <h3 class="text-lg font-semibold text-white">What if the analysis takes longer than expected?</h3>
-      <p class="text-sm leading-relaxed text-slate-200">
-        The companion automatically escalates heavy workloads to async workers. You can keep conversing while refreshes, external fetches,
-        or predictive runs complete in the background.
+    <article class="surface space-y-3 rounded-3xl p-6">
+      <h3 class="text-lg font-semibold">What if analysis takes longer than expected?</h3>
+      <p class="muted text-sm">
+        The companion automatically escalates heavy workloads to async workers. You keep conversing while refreshes, external fetches, or predictive runs complete in the background.
       </p>
     </article>
-    <article class="flex h-full flex-col gap-4 rounded-3xl border border-white/10 bg-white/10 p-6 shadow-lg shadow-brand-900/25">
-      <h3 class="text-lg font-semibold text-white">Can we adapt the experience to our rituals?</h3>
-      <p class="text-sm leading-relaxed text-slate-200">
-        Absolutely. Tailor prompt libraries, define executive briefing templates, or automate delivery to Slack, email, or dashboards.
-        The companion adapts while preserving best practices.
+    <article class="surface space-y-3 rounded-3xl p-6">
+      <h3 class="text-lg font-semibold">Can we adapt the experience to our rituals?</h3>
+      <p class="muted text-sm">
+        Absolutely. Tailor prompt libraries, define executive briefing templates, or automate delivery to Slack, email, or dashboards. The companion adapts while preserving best practices.
       </p>
     </article>
-    <article class="flex h-full flex-col gap-4 rounded-3xl border border-white/10 bg-white/10 p-6 shadow-lg shadow-brand-900/25">
-      <h3 class="text-lg font-semibold text-white">How do we monitor usage and cost?</h3>
-      <p class="text-sm leading-relaxed text-slate-200">
+    <article class="surface space-y-3 rounded-3xl p-6">
+      <h3 class="text-lg font-semibold">How do we monitor usage and cost?</h3>
+      <p class="muted text-sm">
         Built-in analytics surface prompt spend, worker utilisation, and adoption trends. Alerts can notify stakeholders when thresholds are met.
       </p>
     </article>
-    <article class="flex h-full flex-col gap-4 rounded-3xl border border-white/10 bg-white/10 p-6 shadow-lg shadow-brand-900/25">
-      <h3 class="text-lg font-semibold text-white">Where do we start?</h3>
-      <p class="text-sm leading-relaxed text-slate-200">
-        Spin up the sample playbooks, connect a DuckDB source, and run through the onboarding guide. You’ll see how the LLM, FastAPI services,
-        and workers collaborate within minutes.
+    <article class="surface space-y-3 rounded-3xl p-6">
+      <h3 class="text-lg font-semibold">Where do we start?</h3>
+      <p class="muted text-sm">
+        Spin up the sample playbooks, connect a DuckDB source, and run through the onboarding guide. You’ll see how the LLM, FastAPI services, and workers collaborate within minutes.
       </p>
     </article>
   </div>
 
-  <div class="rounded-3xl border border-white/10 bg-white/10 p-8 shadow-xl shadow-brand-900/20">
-    <div class="space-y-3">
-      <p class="text-xs font-semibold uppercase tracking-[0.24em] text-brand-200">Ready for deeper dives?</p>
-      <h3 class="text-2xl font-semibold text-white">Download the companion field guide.</h3>
-      <p class="text-base text-slate-200">
-        The guide includes conversation starters, sample prompts, and breakdowns of how the backend services collaborate to deliver each insight.
-        Share it with stakeholders to align on expectations and spark new ideas.
-      </p>
-    </div>
+  <div class="surface space-y-3 rounded-3xl p-8">
+    <p class="eyebrow">Ready for deeper dives?</p>
+    <h3 class="text-2xl font-semibold">Download the companion field guide.</h3>
+    <p class="muted">
+      The guide includes conversation starters, sample prompts, and breakdowns of how backend services collaborate to deliver each insight. Share it with stakeholders to align on expectations and spark new ideas.
+    </p>
   </div>
 </div>

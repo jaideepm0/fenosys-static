@@ -3,13 +3,13 @@
   <desc id="badgeDesc">Rounded badge with interlocking circles</desc>
   <defs>
     <linearGradient id="badgeGradient" x1="10%" x2="90%" y1="15%" y2="85%">
-      <stop offset="0%" stop-color="#FFF1E8" />
-      <stop offset="50%" stop-color="#FBB18B" />
-      <stop offset="100%" stop-color="#B23E38" />
+      <stop offset="0%" stop-color="#EAF4FF" />
+      <stop offset="50%" stop-color="#A7D4FF" />
+      <stop offset="100%" stop-color="#1E4E8C" />
     </linearGradient>
   </defs>
   <rect x="2" y="2" width="36" height="36" rx="12" fill="url(#badgeGradient)" />
-  <path d="M14 20a6 6 0 0 1 6-6h6" fill="none" stroke="#361725" stroke-width="2.6" stroke-linecap="round" />
-  <path d="M26 20a6 6 0 0 1-6 6h-6" fill="none" stroke="#361725" stroke-width="2.6" stroke-linecap="round" />
-  <circle cx="20" cy="20" r="4" fill="#361725" opacity="0.35" />
+  <path d="M14 20a6 6 0 0 1 6-6h6" fill="none" stroke="#0F2947" stroke-width="2.6" stroke-linecap="round" />
+  <path d="M26 20a6 6 0 0 1-6 6h-6" fill="none" stroke="#0F2947" stroke-width="2.6" stroke-linecap="round" />
+  <circle cx="20" cy="20" r="4" fill="#0F2947" opacity="0.35" />
 </svg>

@@ -1,14 +1,12 @@
-<div class="animate-fade-up-delay flex flex-col gap-16">
-  <div class="grid gap-10 lg:grid-cols-[1.2fr,0.9fr] lg:gap-20">
-    <div class="flex flex-col gap-8">
-      <div class="space-y-5">
-        <p class="text-xs font-semibold uppercase tracking-[0.28em] text-brand-200/80">
-          LLM-guided analysis companion
-        </p>
-        <h1 class="text-4xl font-semibold text-white sm:text-5xl lg:text-6xl">
+<div class="space-y-16">
+  <section class="grid gap-10 lg:grid-cols-[1.2fr,0.9fr] lg:gap-20">
+    <div class="space-y-8">
+      <div class="space-y-4">
+        <p class="eyebrow">LLM-guided analysis companion</p>
+        <h1 class="text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
           Ask in natural language, receive a plan backed by verifiable data.
         </h1>
-        <p class="max-w-3xl text-base leading-relaxed text-slate-200">
+        <p class="muted max-w-3xl text-base leading-relaxed">
           The workspace blends dialogue with governed execution. Every prompt activates FastAPI endpoints that orchestrate connectors,
           in-memory transformations, async worker jobs, and curated visual templates—so you can move from questions to reliable briefings in minutes,
           regardless of file type or upstream system.
@@ -19,7 +17,7 @@
         <a
           href="#workflow"
           data-route-link="workflow"
-          class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-300 via-brand-500 to-brand-400 px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-orange-900/30 transition hover:scale-[1.02]"
+          class="accent-btn"
         >
           Follow the companion journey
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -29,131 +27,102 @@
         <a
           href="#capabilities"
           data-route-link="capabilities"
-          class="inline-flex items-center gap-2 rounded-full border border-brand-300/40 bg-white/10 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-brand-200/80 hover:text-white"
+          class="outline-btn"
         >
           Explore guided features
         </a>
       </div>
 
-      <dl class="grid gap-4 rounded-3xl border border-white/10 bg-white/10 p-6 shadow-lg shadow-brand-900/20 md:grid-cols-3">
+      <div class="surface-soft grid gap-4 rounded-3xl p-6 md:grid-cols-3">
         <div class="space-y-1">
-          <dt class="text-sm uppercase tracking-widest text-slate-400">Prompt to plan</dt>
-          <dd class="text-2xl font-semibold text-brand-100">Under 5 min</dd>
+          <p class="text-sm uppercase tracking-[0.2em] muted">Prompt to plan</p>
+          <p class="text-2xl font-semibold">Under 5 min</p>
+          <p class="muted text-sm">Guided steps to move from question to analysis.</p>
         </div>
         <div class="space-y-1">
-          <dt class="text-sm uppercase tracking-widest text-slate-400">Reusable playbooks</dt>
-          <dd class="text-2xl font-semibold text-brand-100">45+</dd>
+          <p class="text-sm uppercase tracking-[0.2em] muted">Reusable playbooks</p>
+          <p class="text-2xl font-semibold">45+ ready</p>
+          <p class="muted text-sm">Kick off with templates tuned to your domain.</p>
         </div>
         <div class="space-y-1">
-          <dt class="text-sm uppercase tracking-widest text-slate-400">Format agnostic</dt>
-          <dd class="text-base font-medium leading-relaxed text-brand-50">
-            Built to reason across tabular data, documents, and APIs—if Python can reach the source, the companion treats it as first-class.
-          </dd>
+          <p class="text-sm uppercase tracking-[0.2em] muted">Format agnostic</p>
+          <p class="text-2xl font-semibold">Python-friendly</p>
+          <p class="muted text-sm">If Python can reach it, the companion can analyse it.</p>
         </div>
-      </dl>
+      </div>
     </div>
 
-    <div class="grid gap-5 rounded-3xl border border-white/10 bg-white/10 p-8 shadow-xl shadow-brand-900/20">
+    <div class="surface grid gap-5 rounded-3xl p-8">
       <div class="space-y-3">
-        <p class="text-xs font-semibold uppercase tracking-[0.26em] text-brand-200/80">What makes it different</p>
-        <h2 class="text-2xl font-semibold text-white">An LLM that coaches, not just answers.</h2>
-        <p class="text-base text-slate-200">
+        <p class="eyebrow">What makes it different</p>
+        <h2 class="text-2xl font-semibold">An LLM that coaches, not just answers.</h2>
+        <p class="muted">
           Each conversation keeps its context, from uploaded files and notebooks to API payloads, scraped web content, and generated visuals.
           The assistant narrates reasoning, suggests next steps, and packages outcomes in the language your team already relies on—while safety guardrails keep recommendations dependable.
         </p>
       </div>
-
       <div class="grid gap-4 sm:grid-cols-2">
-        <div class="flex flex-col gap-3 rounded-2xl border border-white/10 bg-slate-950/60 p-5">
-          <p class="text-sm font-semibold uppercase tracking-[0.22em] text-brand-200">Guided hypotheses</p>
-          <p class="text-sm text-slate-200">
-            Prompt templates align the LLM with your domain, steering it toward measurable outcomes and guardrails.
-          </p>
+        <div class="surface-soft rounded-2xl p-5 space-y-2">
+          <p class="font-semibold">Guided hypotheses</p>
+          <p class="muted text-sm">Prompt templates align the LLM with your domain, steering it toward measurable outcomes and guardrails.</p>
         </div>
-        <div class="flex flex-col gap-3 rounded-2xl border border-white/10 bg-slate-950/60 p-5">
-          <p class="text-sm font-semibold uppercase tracking-[0.22em] text-brand-200">FastAPI orchestration</p>
-          <p class="text-sm text-slate-200">
-            Secure APIs broker dataset access, webhook calls, cost tracking, and user context. Role-aware policies and audit logs keep every response safe and reproducible.
-          </p>
+        <div class="surface-soft rounded-2xl p-5 space-y-2">
+          <p class="font-semibold">FastAPI orchestration</p>
+          <p class="muted text-sm">Secure APIs broker dataset access, webhook calls, cost tracking, and user context so the companion knows what matters.</p>
         </div>
-        <div class="flex flex-col gap-3 rounded-2xl border border-white/10 bg-slate-950/60 p-5">
-          <p class="text-sm font-semibold uppercase tracking-[0.22em] text-brand-200">Transformation engine</p>
-          <p class="text-sm text-slate-200">
-            Lightweight models unify CSVs, Parquet, REST responses, and semi-structured documents so you can storyboard any dataset in milliseconds.
-          </p>
+        <div class="surface-soft rounded-2xl p-5 space-y-2">
+          <p class="font-semibold">Transformation engine</p>
+          <p class="muted text-sm">Lightweight models unify CSVs, Parquet, REST responses, and semi-structured documents for instant storyboarding.</p>
         </div>
-        <div class="flex flex-col gap-3 rounded-2xl border border-white/10 bg-slate-950/60 p-5">
-          <p class="text-sm font-semibold uppercase tracking-[0.22em] text-brand-200">Worker escalations</p>
-          <p class="text-sm text-slate-200">
-            Async tasks enrich results—fetching external context, refreshing partner APIs, crawling authorised pages, or syncing summaries downstream—while resilience checks and cost guards prevent surprises.
-          </p>
+        <div class="surface-soft rounded-2xl p-5 space-y-2">
+          <p class="font-semibold">Worker escalations</p>
+          <p class="muted text-sm">Async tasks enrich results—fetching context, refreshing APIs, or syncing summaries—while resilience checks prevent surprises.</p>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="relative">
-    <div class="animate-glow absolute -inset-4 -z-10 rounded-[40px] bg-gradient-to-br from-brand-300/35 via-brand-100/28 to-[#5B2527]/28 blur-3xl sm:-inset-8"></div>
-    <div class="rounded-[28px] border border-white/10 bg-slate-950/70 shadow-2xl shadow-orange-900/30 sm:rounded-[32px]">
-      <div class="flex items-center justify-between border-b border-white/10 px-6 py-4 text-xs uppercase tracking-[0.24em] text-slate-400">
-        LLM + analytics choreography
-        <span class="rounded-full bg-brand-400/25 px-3 py-1 text-[0.6rem] font-semibold text-brand-50">Live session</span>
+  <section class="glow-shell">
+    <div class="surface rounded-[28px] p-8 sm:p-10 space-y-6">
+      <div class="surface-soft rounded-2xl p-5 text-sm space-y-2">
+        <p class="font-semibold">Prompt</p>
+        <p class="muted">“Diagnose the dip in usage for premium customers and craft steps to stabilise churn before Q3 renewals.”</p>
       </div>
 
-      <div class="space-y-5 p-6 sm:p-8">
-        <div class="rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 p-5 text-sm text-slate-200">
-          <p class="font-medium text-brand-100">Prompt</p>
-          <p class="mt-2 leading-relaxed">
-            “Diagnose the dip in usage for premium customers and craft steps to stabilise churn before Q3 renewals.”
-          </p>
-        </div>
+      <div class="surface-soft rounded-2xl p-6 space-y-3 text-sm">
+        <p class="font-semibold">Companion response</p>
+        <p class="muted">
+          <strong>1. Intake &amp; safeguards.</strong> Verified permissions, scanned uploaded CSV and PDF decks, pulled customer health via CRM API, and logged the request with cost and data-lineage tags.
+        </p>
+        <p class="muted">
+          <strong>2. Multi-step analysis.</strong> Workers profiled churn indicators, ran statistical comparisons, and generated correlation visuals. The LLM streamed interim findings so you could steer in real time.
+        </p>
+        <p class="muted">
+          <strong>3. Narrative &amp; assets.</strong> Composed a briefing that pairs metrics, annotated trend images, and a rationale outlining assumptions, limitations, and next best experiments.
+        </p>
+        <p class="muted">
+          <strong>4. Delivery.</strong> Scheduled a refresh job, pushed action items to the control tower, and stored the conversation—keeping the response auditable and reproducible.
+        </p>
+      </div>
 
-        <div class="animate-float-soft rounded-2xl border border-white/10 bg-gradient-to-br from-brand-300/25 via-brand-200/18 to-brand-800/25 p-6 text-sm text-slate-100">
-          <div class="space-y-3">
-            <p class="font-medium text-white">Companion response</p>
-            <p class="leading-relaxed text-slate-100/85">
-              <strong>1. Intake &amp; safeguards.</strong> Verified role permissions, scanned uploaded CSV and PDF decks, pulled customer health via CRM API, and logged the request with cost and data-lineage tags.
-            </p>
-            <p class="leading-relaxed text-slate-100/85">
-              <strong>2. Multi-step analysis.</strong> Workers profiled churn indicators, ran statistical comparisons, and generated correlation visuals. The LLM streamed interim findings so you could steer in real time.
-            </p>
-            <p class="leading-relaxed text-slate-100/85">
-              <strong>3. Narrative &amp; assets.</strong> Composed a briefing that pairs metrics, annotated trend images, and a rationale outlining assumptions, limitations, and next best experiments.
-            </p>
-            <p class="leading-relaxed text-slate-100/85">
-              <strong>4. Delivery.</strong> Scheduled a refresh job, pushed action items to the control tower, and stored the conversation—ensuring the final response remains auditable and safely reproducible.
-            </p>
-          </div>
+      <div class="surface-soft rounded-2xl p-5 text-xs space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="font-semibold uppercase tracking-[0.24em]">Companion playbook</span>
+          <span class="chip">On track</span>
         </div>
+        <ul class="muted space-y-1 text-sm">
+          <li class="flex items-center justify-between"><span>Source audit &amp; alignment</span><span>Complete</span></li>
+          <li class="flex items-center justify-between"><span>Insight coaching &amp; explanation</span><span>In progress</span></li>
+          <li class="flex items-center justify-between"><span>Delivery &amp; follow-up</span><span>Scheduled</span></li>
+        </ul>
+      </div>
 
-        <div class="grid gap-3 rounded-2xl border border-white/10 bg-white/10 p-5 text-xs text-slate-200">
-          <div class="flex items-center justify-between">
-            <span class="font-semibold uppercase tracking-[0.24em]">Companion playbook</span>
-            <span class="rounded-full bg-white/10 px-3 py-1 text-[0.6rem] uppercase tracking-[0.24em] text-white/80">On track</span>
-          </div>
-          <ul class="grid gap-2 text-sm">
-            <li class="flex items-center justify-between rounded-xl bg-slate-950/70 px-3 py-2">
-              <span>Source audit &amp; alignment</span>
-              <span class="text-brand-100">Complete</span>
-            </li>
-            <li class="flex items-center justify-between rounded-xl bg-slate-950/70 px-3 py-2">
-              <span>Insight coaching &amp; explanation</span>
-              <span class="text-brand-100">In progress</span>
-            </li>
-            <li class="flex items-center justify-between rounded-xl bg-slate-950/70 px-3 py-2">
-              <span>Delivery &amp; follow-up</span>
-              <span class="text-brand-100">Scheduled</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="rounded-2xl border border-white/10 bg-white/10 p-6 text-sm text-slate-200">
-          <p class="font-semibold text-white">Field note</p>
-          <blockquote class="mt-3 text-sm italic text-slate-300">
-            “It feels like pairing with a staff analyst who remembers every run and keeps nudging us toward measurable outcomes.”
-          </blockquote>
-        </div>
+      <div class="surface-soft rounded-2xl p-6 text-sm space-y-3">
+        <p class="font-semibold">Field note</p>
+        <blockquote class="muted italic">
+          “It feels like pairing with a staff analyst who remembers every run and keeps nudging us toward measurable outcomes.”
+        </blockquote>
       </div>
     </div>
-  </div>
+  </section>
 </div>
