@@ -30,3 +30,13 @@ Navigate to `http://localhost:5173` to preview the site.
 4. In the GitHub repository settings, enable **Pages** and select the `main` branch (root).
 
 The site will be live at `https://<username>.github.io/<repository>/` after the build completes.
+
+## Optional: resilient local server
+
+Browsers occasionally close connections mid-response, which shows up as `BrokenPipeError` when using the bare `http.server` module. Run the bundled helper to suppress those noisy logs:
+
+```bash
+python static/serve.py --host 127.0.0.1 --port 5173
+```
+
+It serves the same files while gracefully ignoring broken-pipe events.

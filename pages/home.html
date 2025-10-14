@@ -1,56 +1,59 @@
 <div class="animate-fade-up-delay flex flex-col gap-16">
-  <div class="grid gap-16 lg:grid-cols-[1.2fr,0.9fr] lg:gap-24">
-    <div class="flex flex-col gap-10">
+  <div class="grid gap-10 lg:grid-cols-[1.2fr,0.9fr] lg:gap-20">
+    <div class="flex flex-col gap-8">
       <div class="space-y-5">
         <p class="text-xs font-semibold uppercase tracking-[0.28em] text-brand-200/80">
           LLM-guided analysis companion
         </p>
         <h1 class="text-4xl font-semibold text-white sm:text-5xl lg:text-6xl">
-        Ask in natural language, receive a plan backed by verifiable data.
-      </h1>
-      <p class="max-w-3xl text-base leading-relaxed text-slate-200">
-        The workspace blends dialogue with governed execution. Every prompt activates FastAPI endpoints that orchestrate connectors,
-        in-memory transformations, async worker jobs, and curated visual templates—so you can move from questions to reliable briefings in minutes,
-        regardless of file type or upstream system.
-      </p>
-    </div>
-    <div class="flex flex-wrap gap-4">
-      <a
-        href="#workflow"
-        data-route-link="workflow"
-        class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-300 via-brand-500 to-brand-400 px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-orange-900/30 transition hover:scale-[1.02]"
-      >
-        Follow the companion journey
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12l-7.5 7.5M3 12h18" />
-        </svg>
-      </a>
-      <a
-        href="#capabilities"
-        data-route-link="capabilities"
-        class="inline-flex items-center gap-2 rounded-full border border-brand-300/40 bg-white/10 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-brand-200/80 hover:text-white"
-      >
-        Explore guided features
-      </a>
-    </div>
-    <dl class="grid gap-4 rounded-3xl border border-white/10 bg-white/10 p-8 shadow-lg shadow-brand-900/20 sm:grid-cols-3">
-      <div class="space-y-1">
-        <dt class="text-sm uppercase tracking-widest text-slate-400">Prompt to plan</dt>
-        <dd class="text-2xl font-semibold text-brand-100">Under 5 min</dd>
+          Ask in natural language, receive a plan backed by verifiable data.
+        </h1>
+        <p class="max-w-3xl text-base leading-relaxed text-slate-200">
+          The workspace blends dialogue with governed execution. Every prompt activates FastAPI endpoints that orchestrate connectors,
+          in-memory transformations, async worker jobs, and curated visual templates—so you can move from questions to reliable briefings in minutes,
+          regardless of file type or upstream system.
+        </p>
       </div>
-      <div class="space-y-1">
-        <dt class="text-sm uppercase tracking-widest text-slate-400">Reusable playbooks</dt>
-        <dd class="text-2xl font-semibold text-brand-100">45+</dd>
+
+      <div class="flex flex-wrap gap-3">
+        <a
+          href="#workflow"
+          data-route-link="workflow"
+          class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-300 via-brand-500 to-brand-400 px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-orange-900/30 transition hover:scale-[1.02]"
+        >
+          Follow the companion journey
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12l-7.5 7.5M3 12h18" />
+          </svg>
+        </a>
+        <a
+          href="#capabilities"
+          data-route-link="capabilities"
+          class="inline-flex items-center gap-2 rounded-full border border-brand-300/40 bg-white/10 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-brand-200/80 hover:text-white"
+        >
+          Explore guided features
+        </a>
       </div>
-      <div class="space-y-1">
-        <dt class="text-sm uppercase tracking-widest text-slate-400">Format agnostic</dt>
-        <dd class="text-base font-medium leading-relaxed text-brand-50">
-          Built to reason across tabular data, documents, and APIs—if Python can reach the source, the companion treats it as first-class.
-        </dd>
-      </div>
-    </dl>
+
+      <dl class="grid gap-4 rounded-3xl border border-white/10 bg-white/10 p-6 shadow-lg shadow-brand-900/20 md:grid-cols-3">
+        <div class="space-y-1">
+          <dt class="text-sm uppercase tracking-widest text-slate-400">Prompt to plan</dt>
+          <dd class="text-2xl font-semibold text-brand-100">Under 5 min</dd>
+        </div>
+        <div class="space-y-1">
+          <dt class="text-sm uppercase tracking-widest text-slate-400">Reusable playbooks</dt>
+          <dd class="text-2xl font-semibold text-brand-100">45+</dd>
+        </div>
+        <div class="space-y-1">
+          <dt class="text-sm uppercase tracking-widest text-slate-400">Format agnostic</dt>
+          <dd class="text-base font-medium leading-relaxed text-brand-50">
+            Built to reason across tabular data, documents, and APIs—if Python can reach the source, the companion treats it as first-class.
+          </dd>
+        </div>
+      </dl>
     </div>
-    <div class="grid gap-6 rounded-3xl border border-white/10 bg-white/10 p-9 shadow-xl shadow-brand-900/20">
+
+    <div class="grid gap-5 rounded-3xl border border-white/10 bg-white/10 p-8 shadow-xl shadow-brand-900/20">
       <div class="space-y-3">
         <p class="text-xs font-semibold uppercase tracking-[0.26em] text-brand-200/80">What makes it different</p>
         <h2 class="text-2xl font-semibold text-white">An LLM that coaches, not just answers.</h2>
@@ -59,6 +62,7 @@
           The assistant narrates reasoning, suggests next steps, and packages outcomes in the language your team already relies on—while safety guardrails keep recommendations dependable.
         </p>
       </div>
+
       <div class="grid gap-4 sm:grid-cols-2">
         <div class="flex flex-col gap-3 rounded-2xl border border-white/10 bg-slate-950/60 p-5">
           <p class="text-sm font-semibold uppercase tracking-[0.22em] text-brand-200">Guided hypotheses</p>
@@ -87,20 +91,23 @@
       </div>
     </div>
   </div>
+
   <div class="relative">
-    <div class="animate-glow absolute -inset-8 -z-10 rounded-[40px] bg-gradient-to-br from-brand-300/35 via-brand-100/28 to-[#5B2527]/28 blur-3xl"></div>
-    <div class="rounded-[32px] border border-white/10 bg-slate-950/70 shadow-2xl shadow-orange-900/30">
+    <div class="animate-glow absolute -inset-4 -z-10 rounded-[40px] bg-gradient-to-br from-brand-300/35 via-brand-100/28 to-[#5B2527]/28 blur-3xl sm:-inset-8"></div>
+    <div class="rounded-[28px] border border-white/10 bg-slate-950/70 shadow-2xl shadow-orange-900/30 sm:rounded-[32px]">
       <div class="flex items-center justify-between border-b border-white/10 px-6 py-4 text-xs uppercase tracking-[0.24em] text-slate-400">
         LLM + analytics choreography
         <span class="rounded-full bg-brand-400/25 px-3 py-1 text-[0.6rem] font-semibold text-brand-50">Live session</span>
       </div>
-      <div class="space-y-6 p-8">
+
+      <div class="space-y-5 p-6 sm:p-8">
         <div class="rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 p-5 text-sm text-slate-200">
           <p class="font-medium text-brand-100">Prompt</p>
           <p class="mt-2 leading-relaxed">
             “Diagnose the dip in usage for premium customers and craft steps to stabilise churn before Q3 renewals.”
           </p>
         </div>
+
         <div class="animate-float-soft rounded-2xl border border-white/10 bg-gradient-to-br from-brand-300/25 via-brand-200/18 to-brand-800/25 p-6 text-sm text-slate-100">
           <div class="space-y-3">
             <p class="font-medium text-white">Companion response</p>
@@ -118,6 +125,7 @@
             </p>
           </div>
         </div>
+
         <div class="grid gap-3 rounded-2xl border border-white/10 bg-white/10 p-5 text-xs text-slate-200">
           <div class="flex items-center justify-between">
             <span class="font-semibold uppercase tracking-[0.24em]">Companion playbook</span>
@@ -138,6 +146,7 @@
             </li>
           </ul>
         </div>
+
         <div class="rounded-2xl border border-white/10 bg-white/10 p-6 text-sm text-slate-200">
           <p class="font-semibold text-white">Field note</p>
           <blockquote class="mt-3 text-sm italic text-slate-300">

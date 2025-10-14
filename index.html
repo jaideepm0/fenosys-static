@@ -50,6 +50,18 @@
       };
     </script>
     <style>
+      html {
+        background-color: #131327;
+      }
+
+      body {
+        overscroll-behavior: none;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        -webkit-font-smoothing: antialiased;
+      }
+
       @keyframes fade-up {
         0% {
           opacity: 0;
@@ -174,7 +186,7 @@
       </div>
     </header>
 
-    <main class="mx-auto flex w-full max-w-[110rem] flex-col gap-16 px-8 pb-28 pt-16 lg:pt-28">
+    <main class="mx-auto flex w-full max-w-[110rem] flex-col gap-14 px-4 pb-24 pt-16 sm:gap-16 sm:px-6 lg:px-8 lg:pb-28 lg:pt-28">
       <section
         class="animate-fade-up flex min-h-[60vh] items-stretch justify-center rounded-[36px] border border-white/10 bg-white/10 p-10 shadow-brand-glow backdrop-blur-sm lg:p-16"
       >
