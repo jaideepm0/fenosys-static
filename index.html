@@ -80,7 +80,7 @@
   }
 
   :root[data-theme="dark"] {
-    --bg-page: #101326;
+    --bg-page: #0b0d1e;
     --fg-base: #eef0ff;
     --fg-muted: #b3bad9;
     --surface: rgba(26, 31, 53, 0.94);
@@ -107,6 +107,22 @@
     overscroll-behavior: none;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
+  }
+
+  :root[data-theme="dark"] html {
+    background-color: #050712;
+  }
+
+  :root[data-theme="dark"] body {
+    background-color: var(--bg-page);
+    background-image:
+      radial-gradient(120% 160% at 50% -5%, rgba(138, 155, 255, 0.38), transparent 70%),
+      radial-gradient(170% 170% at 5% 105%, rgba(255, 143, 177, 0.28), transparent 78%),
+      radial-gradient(170% 170% at 95% 110%, rgba(255, 184, 107, 0.2), transparent 82%),
+      linear-gradient(185deg, rgba(10, 12, 28, 0.96) 0%, rgba(6, 7, 22, 0.98) 60%, rgba(5, 6, 18, 1) 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-blend-mode: screen, screen, screen, multiply;
   }
 
   a {
@@ -331,7 +347,10 @@
   }
 
   :root[data-theme="dark"] .header-bar {
-    background: rgba(17, 19, 35, 0.85);
+    background:
+      linear-gradient(135deg, rgba(28, 24, 54, 0.92) 0%, rgba(19, 21, 45, 0.94) 60%, rgba(14, 17, 36, 0.96) 100%);
+    border-bottom: 1px solid rgba(138, 155, 255, 0.2);
+    box-shadow: 0 25px 60px -40px rgba(28, 24, 54, 0.6);
   }
 
   .footer-bar {
@@ -340,7 +359,24 @@
   }
 
   :root[data-theme="dark"] .footer-bar {
-    background: rgba(15, 18, 32, 0.84);
+    background:
+      linear-gradient(180deg, rgba(18, 19, 40, 0.95) 0%, rgba(12, 14, 30, 0.98) 100%);
+    border-top: 1px solid rgba(138, 155, 255, 0.18);
+    box-shadow: 0 -25px 60px -42px rgba(14, 17, 36, 0.65);
+  }
+
+  :root[data-theme="dark"] .header-bar .nav-link,
+  :root[data-theme="dark"] .footer-bar .nav-link {
+    color: rgba(235, 233, 255, 0.92);
+  }
+
+  :root[data-theme="dark"] .header-bar .nav-link:hover,
+  :root[data-theme="dark"] .footer-bar .nav-link:hover {
+    color: var(--accent-mid);
+  }
+
+  :root[data-theme="dark"] .footer-bar .muted {
+    color: rgba(213, 212, 242, 0.72);
   }
 
   @keyframes fade-up {
@@ -493,10 +529,7 @@
             </div>
             <span class="muted text-xs">Simulated journey preview</span>
           </div>
-          <div
-            class="workspace-gradient flex-1 overflow-y-auto p-8 text-base transition-colors sm:p-10"
-            id="route-outlet"
-          >
+          <div class="workspace-gradient flex-1 p-8 text-base transition-colors sm:p-10" id="route-outlet">
             <div class="grid h-full place-items-center text-center text-sm muted">
               Loading content…
             </div>
