@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta
+      name="description"
+      content="Data Analysis Agent — an AI workspace for orchestrating datasets, conversations, and insights in one place."
+    />
+    <title>Data Analysis Agent</title>
+    <link
+      rel="icon"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f4c8.svg"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script defer src="assets/app.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="nav__brand" href="#home" data-route-link="home">
+          <span class="nav__logo">Δ</span>
+          <span class="nav__title">Data Analysis Agent</span>
+        </a>
+        <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="nav__links">
+          <a href="#home" class="nav__link" data-route-link="home">Overview</a>
+          <a href="#capabilities" class="nav__link" data-route-link="capabilities"
+            >Capabilities</a
+          >
+          <a href="#workflow" class="nav__link" data-route-link="workflow"
+            >Workflow</a
+          >
+          <a href="#insights" class="nav__link" data-route-link="insights"
+            >Insights</a
+          >
+          <a href="#faq" class="nav__link" data-route-link="faq">FAQ</a>
+        </div>
+        <a class="nav__cta" href="mailto:team@datainsights.dev">
+          Request Access
+        </a>
+      </nav>
+    </header>
+
+    <main class="view">
+      <section class="view__panel" data-route="home">
+        <div class="hero">
+          <div class="hero__content">
+            <p class="eyebrow">AI-first analytics workspace</p>
+            <h1>Turn conversations into repeatable data workflows.</h1>
+            <p class="lead">
+              Data Analysis Agent blends chat, dashboards, and automated
+              pipelines. Bring in any dataset, collaborate with your team, and
+              push trusted insights back to your tools.
+            </p>
+            <div class="hero__actions">
+              <a class="button button--primary" href="#workflow" data-route-link="workflow">
+                Explore the flow
+              </a>
+              <a class="button button--ghost" href="#capabilities" data-route-link="capabilities">
+                See what&#39;s inside
+              </a>
+            </div>
+            <dl class="metrics">
+              <div>
+                <dt>5x faster</dt>
+                <dd>from question to insight with guided prompting</dd>
+              </div>
+              <div>
+                <dt>Unified history</dt>
+                <dd>retrieve every chart, prompt, and cost in seconds</dd>
+              </div>
+              <div>
+                <dt>Enterprise ready</dt>
+                <dd>OAuth, role-aware dashboards, and cost tracking</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="hero__mock">
+            <div class="mock-panel">
+              <div class="mock-panel__header">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="mock-panel__body">
+                <div class="mock-chat">
+                  <p class="mock-chat__user">How is marketing spend trending?</p>
+                  <p class="mock-chat__bot">
+                    I ingested <strong>ad_spend.parquet</strong> and built a
+                    7-day moving average by channel. Spend is up 12.7% week over
+                    week with paid search leading the gain.
+                  </p>
+                </div>
+                <div class="mock-chart"></div>
+                <ul class="mock-tasks">
+                  <li>Upload dataset</li>
+                  <li>Draft SQL transformation</li>
+                  <li>Ship insight to dashboard</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view__panel" data-route="capabilities" hidden>
+        <div class="section">
+          <header class="section__header">
+            <p class="eyebrow">Designed for clarity</p>
+            <h2>The toolkit that powers the Agent.</h2>
+            <p class="section__lead">
+              A modern command center that keeps every conversation, dataset,
+              and insight in sync.
+            </p>
+          </header>
+          <div class="grid grid--three">
+            <article class="card">
+              <h3>Conversation Stack</h3>
+              <p>
+                Keep every message, dataset snapshot, and follow-up side by side
+                with contextual filters that never get in the way.
+              </p>
+              <ul>
+                <li>Hash-based routing across sessions</li>
+                <li>Fast search with instant previews</li>
+                <li>Light &amp; dark mode friendly</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>Inspector View</h3>
+              <p>
+                Step through generated SQL, charts, and variations before you
+                commit results. Every run is captured for audit.
+              </p>
+              <ul>
+                <li>Inline diff viewer for transformations</li>
+                <li>Cost ledger per run</li>
+                <li>Metadata-rich history timeline</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>User Dashboard</h3>
+              <p>
+                A modern control surface that highlights usage trends, budgets,
+                and active automations across your team.
+              </p>
+              <ul>
+                <li>Per-user usage insights</li>
+                <li>Export-ready summaries</li>
+                <li>OAuth-powered session management</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="view__panel" data-route="workflow" hidden>
+        <div class="section section--alt">
+          <header class="section__header">
+            <p class="eyebrow">Reliable flow</p>
+            <h2>Move from raw data to trusted decision.</h2>
+          </header>
+          <ol class="timeline">
+            <li>
+              <h3>Connect</h3>
+              <p>
+                Bring in CSVs, Parquet files, or connect directly to DuckDB
+                backed storage. We handle schema inference and caching.
+              </p>
+            </li>
+            <li>
+              <h3>Collaborate</h3>
+              <p>
+                Iterate in natural language. The agent suggests SQL drafts,
+                visual diagnostics, and metrics to track.
+              </p>
+            </li>
+            <li>
+              <h3>Validate</h3>
+              <p>
+                Inspect every transformation. Compare revisions, pin favorite
+                answers, and share commentary with stakeholders.
+              </p>
+            </li>
+            <li>
+              <h3>Deliver</h3>
+              <p>
+                Publish insights to dashboards or export to your downstream
+                tools while keeping an auditable trail.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="view__panel" data-route="insights" hidden>
+        <div class="section">
+          <header class="section__header">
+            <p class="eyebrow">Understand impact</p>
+            <h2>Dashboards that reflect real usage.</h2>
+            <p class="section__lead">
+              Track costs, model drift, and team engagement from one place.
+            </p>
+          </header>
+          <div class="grid grid--two">
+            <article class="card">
+              <h3>Usage analytics</h3>
+              <p>
+                Measure users, prompts, and GPU minutes. Export to CSV or ship to
+                your lakehouse with a click.
+              </p>
+              <dl class="stat">
+                <div>
+                  <dt>Total prompts</dt>
+                  <dd>42,180</dd>
+                </div>
+                <div>
+                  <dt>Avg. cost / prompt</dt>
+                  <dd>$0.018</dd>
+                </div>
+              </dl>
+            </article>
+            <article class="card">
+              <h3>Automation health</h3>
+              <p>
+                Monitor worker jobs with live status, retry controls, and alert
+                integrations so nothing slips.
+              </p>
+              <ul>
+                <li>Smart retry queues with visibility</li>
+                <li>Fine-grained API secrets</li>
+                <li>Proactive anomaly detection</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="view__panel" data-route="faq" hidden>
+        <div class="section section--alt">
+          <header class="section__header">
+            <p class="eyebrow">In case you ask</p>
+            <h2>Frequently asked questions.</h2>
+          </header>
+          <div class="faq">
+            <article>
+              <h3>What powers the agent?</h3>
+              <p>
+                A FastAPI backend orchestrates DuckDB, async workers, and
+                OpenAI-powered reasoning. The frontend ships as a Svelte + Vite
+                SPA, mirrored here as a static preview.
+              </p>
+            </article>
+            <article>
+              <h3>Can I deploy this quickly?</h3>
+              <p>
+                Yes. Drop this static bundle into GitHub Pages or any static host
+                to share the experience across your org.
+              </p>
+            </article>
+            <article>
+              <h3>How do I request access?</h3>
+              <p>
+                Reach out at <a href="mailto:team@datainsights.dev">team@datainsights.dev</a>
+                for a guided walkthrough and onboarding plan.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p>&copy; <span id="copyright-year"></span> Data Analysis Agent.</p>
+        <div class="site-footer__links">
+          <a href="#capabilities" data-route-link="capabilities">Product</a>
+          <a href="#workflow" data-route-link="workflow">How it works</a>
+          <a href="mailto:team@datainsights.dev">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
