@@ -8,279 +8,159 @@
     />
     <meta
       name="description"
-      content="Data Analysis Agent — an AI workspace for orchestrating datasets, conversations, and insights in one place."
+      content="Fenosys — an AI-native analytics workspace for orchestrating datasets, conversations, and insights in one place."
     />
-    <title>Data Analysis Agent</title>
+    <title>Fenosys</title>
+    <link rel="icon" href="assets/logo-fenosys.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="icon"
-      href="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f4c8.svg"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/styles.css" />
+    <script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Manrope", "Inter", "system-ui", "sans-serif"],
+            },
+            colors: {
+              fenosys: {
+                50: "#FFF8ED",
+                100: "#FFEBD0",
+                200: "#FFD29A",
+                300: "#FFB55C",
+                400: "#FF9726",
+                500: "#F37610",
+                600: "#D55B0B",
+                700: "#AF4310",
+                800: "#893513",
+                900: "#6F2C14",
+              },
+            },
+            boxShadow: {
+              "fenosys-glow": "0 40px 120px -40px rgba(243, 118, 16, 0.45)",
+            },
+          },
+        },
+      };
+    </script>
     <script defer src="assets/app.js"></script>
   </head>
-  <body>
-    <header class="site-header">
-      <nav class="nav">
-        <a class="nav__brand" href="#home" data-route-link="home">
-          <span class="nav__logo">Δ</span>
-          <span class="nav__title">Data Analysis Agent</span>
+  <body
+    class="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-fenosys-900 text-slate-100"
+  >
+    <header
+      class="sticky top-0 z-30 border-b border-white/10 bg-slate-950/75 backdrop-blur-xl"
+    >
+      <nav
+        class="mx-auto flex max-w-6xl items-center gap-4 px-6 py-5"
+      >
+        <a
+          class="flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold uppercase tracking-[0.38em] text-fenosys-200 transition hover:border-fenosys-400/60 hover:text-white"
+          href="#home"
+          data-route-link="home"
+        >
+          <img
+            src="assets/logo-fenosys.svg"
+            alt="Fenosys emblem"
+            class="h-9 w-9"
+          />
+          <span>Fenosys</span>
         </a>
-        <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
-          <span></span><span></span><span></span>
+        <button
+          class="ml-auto flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 lg:hidden"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+          data-nav-toggle
+        >
+          <span class="sr-only">Toggle navigation</span>
+          <svg class="h-6 w-6 text-slate-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
         </button>
-        <div class="nav__links">
-          <a href="#home" class="nav__link" data-route-link="home">Overview</a>
-          <a href="#capabilities" class="nav__link" data-route-link="capabilities"
-            >Capabilities</a
-          >
-          <a href="#workflow" class="nav__link" data-route-link="workflow"
-            >Workflow</a
-          >
-          <a href="#insights" class="nav__link" data-route-link="insights"
-            >Insights</a
-          >
-          <a href="#faq" class="nav__link" data-route-link="faq">FAQ</a>
+        <div
+          class="hidden items-center gap-2 text-sm font-medium text-slate-200 lg:flex"
+          data-nav-links
+        >
+          <a class="rounded-xl border border-transparent px-3 py-2 transition hover:bg-white/10" href="#home" data-route-link="home">
+            Overview
+          </a>
+          <a class="rounded-xl border border-transparent px-3 py-2 transition hover:bg-white/10" href="#capabilities" data-route-link="capabilities">
+            Capabilities
+          </a>
+          <a class="rounded-xl border border-transparent px-3 py-2 transition hover:bg-white/10" href="#workflow" data-route-link="workflow">
+            Workflow
+          </a>
+          <a class="rounded-xl border border-transparent px-3 py-2 transition hover:bg-white/10" href="#insights" data-route-link="insights">
+            Insights
+          </a>
+          <a class="rounded-xl border border-transparent px-3 py-2 transition hover:bg-white/10" href="#faq" data-route-link="faq">
+            FAQ
+          </a>
         </div>
-        <a class="nav__cta" href="mailto:team@datainsights.dev">
-          Request Access
-        </a>
       </nav>
+      <div class="hidden border-t border-white/10 bg-slate-950/90 px-6 py-4 lg:hidden" data-nav-drawer>
+        <div class="flex flex-col gap-3 text-base font-medium text-slate-200">
+          <a class="rounded-xl border border-transparent px-4 py-2 transition hover:bg-white/10" href="#home" data-route-link="home">
+            Overview
+          </a>
+          <a class="rounded-xl border border-transparent px-4 py-2 transition hover:bg-white/10" href="#capabilities" data-route-link="capabilities">
+            Capabilities
+          </a>
+          <a class="rounded-xl border border-transparent px-4 py-2 transition hover:bg-white/10" href="#workflow" data-route-link="workflow">
+            Workflow
+          </a>
+          <a class="rounded-xl border border-transparent px-4 py-2 transition hover:bg-white/10" href="#insights" data-route-link="insights">
+            Insights
+          </a>
+          <a class="rounded-xl border border-transparent px-4 py-2 transition hover:bg-white/10" href="#faq" data-route-link="faq">
+            FAQ
+          </a>
+        </div>
+      </div>
     </header>
 
-    <main class="view">
-      <section class="view__panel" data-route="home">
-        <div class="hero">
-          <div class="hero__content">
-            <p class="eyebrow">AI-first analytics workspace</p>
-            <h1>Turn conversations into repeatable data workflows.</h1>
-            <p class="lead">
-              Data Analysis Agent blends chat, dashboards, and automated
-              pipelines. Bring in any dataset, collaborate with your team, and
-              push trusted insights back to your tools.
-            </p>
-            <div class="hero__actions">
-              <a class="button button--primary" href="#workflow" data-route-link="workflow">
-                Explore the flow
-              </a>
-              <a class="button button--ghost" href="#capabilities" data-route-link="capabilities">
-                See what&#39;s inside
-              </a>
+    <main class="mx-auto flex max-w-6xl flex-col gap-12 px-6 pb-24 pt-16 lg:pt-24">
+      <section
+        class="flex min-h-[60vh] items-stretch justify-center rounded-3xl border border-white/10 bg-white/5 p-8 shadow-fenosys-glow lg:p-12"
+      >
+        <div
+          class="flex w-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-slate-950/70 backdrop-blur-lg"
+        >
+          <div class="flex items-center justify-between border-b border-white/10 px-6 py-4">
+            <div class="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.42em] text-fenosys-200">
+              <span class="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-tr from-fenosys-400 to-amber-300 text-slate-950 font-bold">
+                Φ
+              </span>
+              Preview window
             </div>
-            <dl class="metrics">
-              <div>
-                <dt>5x faster</dt>
-                <dd>from question to insight with guided prompting</dd>
-              </div>
-              <div>
-                <dt>Unified history</dt>
-                <dd>retrieve every chart, prompt, and cost in seconds</dd>
-              </div>
-              <div>
-                <dt>Enterprise ready</dt>
-                <dd>OAuth, role-aware dashboards, and cost tracking</dd>
-              </div>
-            </dl>
+            <span class="text-xs text-slate-400">Dynamic route preview</span>
           </div>
-          <div class="hero__mock">
-            <div class="mock-panel">
-              <div class="mock-panel__header">
-                <span></span><span></span><span></span>
-              </div>
-              <div class="mock-panel__body">
-                <div class="mock-chat">
-                  <p class="mock-chat__user">How is marketing spend trending?</p>
-                  <p class="mock-chat__bot">
-                    I ingested <strong>ad_spend.parquet</strong> and built a
-                    7-day moving average by channel. Spend is up 12.7% week over
-                    week with paid search leading the gain.
-                  </p>
-                </div>
-                <div class="mock-chart"></div>
-                <ul class="mock-tasks">
-                  <li>Upload dataset</li>
-                  <li>Draft SQL transformation</li>
-                  <li>Ship insight to dashboard</li>
-                </ul>
-              </div>
+          <div
+            class="flex-1 overflow-y-auto bg-gradient-to-br from-slate-950 via-slate-900 to-fenosys-900/60 p-8 text-slate-100"
+            id="route-outlet"
+          >
+            <div class="grid h-full place-items-center text-center text-sm text-slate-400">
+              Loading content…
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="view__panel" data-route="capabilities" hidden>
-        <div class="section">
-          <header class="section__header">
-            <p class="eyebrow">Designed for clarity</p>
-            <h2>The toolkit that powers the Agent.</h2>
-            <p class="section__lead">
-              A modern command center that keeps every conversation, dataset,
-              and insight in sync.
-            </p>
-          </header>
-          <div class="grid grid--three">
-            <article class="card">
-              <h3>Conversation Stack</h3>
-              <p>
-                Keep every message, dataset snapshot, and follow-up side by side
-                with contextual filters that never get in the way.
-              </p>
-              <ul>
-                <li>Hash-based routing across sessions</li>
-                <li>Fast search with instant previews</li>
-                <li>Light &amp; dark mode friendly</li>
-              </ul>
-            </article>
-            <article class="card">
-              <h3>Inspector View</h3>
-              <p>
-                Step through generated SQL, charts, and variations before you
-                commit results. Every run is captured for audit.
-              </p>
-              <ul>
-                <li>Inline diff viewer for transformations</li>
-                <li>Cost ledger per run</li>
-                <li>Metadata-rich history timeline</li>
-              </ul>
-            </article>
-            <article class="card">
-              <h3>User Dashboard</h3>
-              <p>
-                A modern control surface that highlights usage trends, budgets,
-                and active automations across your team.
-              </p>
-              <ul>
-                <li>Per-user usage insights</li>
-                <li>Export-ready summaries</li>
-                <li>OAuth-powered session management</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="view__panel" data-route="workflow" hidden>
-        <div class="section section--alt">
-          <header class="section__header">
-            <p class="eyebrow">Reliable flow</p>
-            <h2>Move from raw data to trusted decision.</h2>
-          </header>
-          <ol class="timeline">
-            <li>
-              <h3>Connect</h3>
-              <p>
-                Bring in CSVs, Parquet files, or connect directly to DuckDB
-                backed storage. We handle schema inference and caching.
-              </p>
-            </li>
-            <li>
-              <h3>Collaborate</h3>
-              <p>
-                Iterate in natural language. The agent suggests SQL drafts,
-                visual diagnostics, and metrics to track.
-              </p>
-            </li>
-            <li>
-              <h3>Validate</h3>
-              <p>
-                Inspect every transformation. Compare revisions, pin favorite
-                answers, and share commentary with stakeholders.
-              </p>
-            </li>
-            <li>
-              <h3>Deliver</h3>
-              <p>
-                Publish insights to dashboards or export to your downstream
-                tools while keeping an auditable trail.
-              </p>
-            </li>
-          </ol>
-        </div>
-      </section>
-
-      <section class="view__panel" data-route="insights" hidden>
-        <div class="section">
-          <header class="section__header">
-            <p class="eyebrow">Understand impact</p>
-            <h2>Dashboards that reflect real usage.</h2>
-            <p class="section__lead">
-              Track costs, model drift, and team engagement from one place.
-            </p>
-          </header>
-          <div class="grid grid--two">
-            <article class="card">
-              <h3>Usage analytics</h3>
-              <p>
-                Measure users, prompts, and GPU minutes. Export to CSV or ship to
-                your lakehouse with a click.
-              </p>
-              <dl class="stat">
-                <div>
-                  <dt>Total prompts</dt>
-                  <dd>42,180</dd>
-                </div>
-                <div>
-                  <dt>Avg. cost / prompt</dt>
-                  <dd>$0.018</dd>
-                </div>
-              </dl>
-            </article>
-            <article class="card">
-              <h3>Automation health</h3>
-              <p>
-                Monitor worker jobs with live status, retry controls, and alert
-                integrations so nothing slips.
-              </p>
-              <ul>
-                <li>Smart retry queues with visibility</li>
-                <li>Fine-grained API secrets</li>
-                <li>Proactive anomaly detection</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="view__panel" data-route="faq" hidden>
-        <div class="section section--alt">
-          <header class="section__header">
-            <p class="eyebrow">In case you ask</p>
-            <h2>Frequently asked questions.</h2>
-          </header>
-          <div class="faq">
-            <article>
-              <h3>What powers the agent?</h3>
-              <p>
-                A FastAPI backend orchestrates DuckDB, async workers, and
-                OpenAI-powered reasoning. The frontend ships as a Svelte + Vite
-                SPA, mirrored here as a static preview.
-              </p>
-            </article>
-            <article>
-              <h3>Can I deploy this quickly?</h3>
-              <p>
-                Yes. Drop this static bundle into GitHub Pages or any static host
-                to share the experience across your org.
-              </p>
-            </article>
-            <article>
-              <h3>How do I request access?</h3>
-              <p>
-                Reach out at <a href="mailto:team@datainsights.dev">team@datainsights.dev</a>
-                for a guided walkthrough and onboarding plan.
-              </p>
-            </article>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="site-footer__inner">
-        <p>&copy; <span id="copyright-year"></span> Data Analysis Agent.</p>
-        <div class="site-footer__links">
-          <a href="#capabilities" data-route-link="capabilities">Product</a>
-          <a href="#workflow" data-route-link="workflow">How it works</a>
-          <a href="mailto:team@datainsights.dev">Contact</a>
+    <footer class="border-t border-white/10 bg-slate-950/80 py-10">
+      <div class="mx-auto flex max-w-6xl flex-col gap-4 px-6 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
+        <p class="tracking-wide">
+          &copy; <span id="copyright-year"></span> Fenosys
+        </p>
+        <div class="flex gap-4">
+          <a class="transition hover:text-fenosys-200" href="#capabilities" data-route-link="capabilities">Product</a>
+          <a class="transition hover:text-fenosys-200" href="#workflow" data-route-link="workflow">Flow</a>
+          <a class="transition hover:text-fenosys-200" href="#insights" data-route-link="insights">Insights</a>
         </div>
       </div>
     </footer>
