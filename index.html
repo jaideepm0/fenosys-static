@@ -8,10 +8,10 @@
     />
     <meta
       name="description"
-      content="Fenosys — an AI-native analytics workspace for orchestrating datasets, conversations, and insights in one place."
+      content="Immersive analytics workspace that transforms prompts into living insights, narratives, and decisions."
     />
-    <title>Fenosys</title>
-    <link rel="icon" href="assets/logo-fenosys.svg" />
+    <title>Immersive Analytics Workspace</title>
+    <link rel="icon" href="assets/logo.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -27,21 +27,22 @@
               sans: ["Manrope", "Inter", "system-ui", "sans-serif"],
             },
             colors: {
-              fenosys: {
-                50: "#FFF8ED",
-                100: "#FFEBD0",
-                200: "#FFD29A",
-                300: "#FFB55C",
-                400: "#FF9726",
-                500: "#F37610",
-                600: "#D55B0B",
-                700: "#AF4310",
-                800: "#893513",
-                900: "#6F2C14",
+              brand: {
+                50: "#FFF5F2",
+                100: "#FEE9E0",
+                200: "#FBD3C0",
+                300: "#F7AF94",
+                400: "#F08668",
+                500: "#E25B41",
+                600: "#C44835",
+                700: "#9E3A2C",
+                800: "#7A2E26",
+                900: "#59231E",
               },
+              twilight: "#241F3F",
             },
             boxShadow: {
-              "fenosys-glow": "0 40px 120px -40px rgba(243, 118, 16, 0.45)",
+              "brand-glow": "0 50px 140px -50px rgba(224, 91, 65, 0.5)",
             },
           },
         },
@@ -50,25 +51,25 @@
     <script defer src="assets/app.js"></script>
   </head>
   <body
-    class="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-fenosys-900 text-slate-100"
+    class="min-h-screen bg-gradient-to-br from-[#121222] via-[#1b1629] to-[#2c1423] text-slate-100"
   >
     <header
       class="sticky top-0 z-30 border-b border-white/10 bg-slate-950/75 backdrop-blur-xl"
     >
       <nav
-        class="mx-auto flex max-w-6xl items-center gap-4 px-6 py-5"
+        class="mx-auto flex max-w-7xl items-center gap-4 px-6 py-5"
       >
         <a
-          class="flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold uppercase tracking-[0.38em] text-fenosys-200 transition hover:border-fenosys-400/60 hover:text-white"
+          class="flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 transition hover:border-brand-400/60 hover:text-white"
           href="#home"
           data-route-link="home"
         >
           <img
-            src="assets/logo-fenosys.svg"
-            alt="Fenosys emblem"
+            src="assets/logo.svg"
+            alt="Company emblem"
             class="h-9 w-9"
           />
-          <span>Fenosys</span>
+          <span class="sr-only">Home</span>
         </a>
         <button
           class="ml-auto flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 lg:hidden"
@@ -124,24 +125,24 @@
       </div>
     </header>
 
-    <main class="mx-auto flex max-w-6xl flex-col gap-12 px-6 pb-24 pt-16 lg:pt-24">
+    <main class="mx-auto flex max-w-7xl flex-col gap-12 px-6 pb-24 pt-16 lg:pt-24">
       <section
-        class="flex min-h-[60vh] items-stretch justify-center rounded-3xl border border-white/10 bg-white/5 p-8 shadow-fenosys-glow lg:p-12"
+        class="flex min-h-[60vh] items-stretch justify-center rounded-[32px] border border-white/10 bg-white/5 p-8 shadow-brand-glow lg:p-14"
       >
         <div
-          class="flex w-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-slate-950/70 backdrop-blur-lg"
+          class="flex w-full flex-col overflow-hidden rounded-[26px] border border-white/10 bg-slate-950/70 backdrop-blur-lg"
         >
           <div class="flex items-center justify-between border-b border-white/10 px-6 py-4">
-            <div class="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.42em] text-fenosys-200">
-              <span class="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-tr from-fenosys-400 to-amber-300 text-slate-950 font-bold">
-                Φ
+            <div class="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.38em] text-brand-200">
+              <span class="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-tr from-brand-400 to-[#F7AF94] text-slate-950 font-bold">
+                f
               </span>
               Preview window
             </div>
             <span class="text-xs text-slate-400">Dynamic route preview</span>
           </div>
           <div
-            class="flex-1 overflow-y-auto bg-gradient-to-br from-slate-950 via-slate-900 to-fenosys-900/60 p-8 text-slate-100"
+            class="flex-1 overflow-y-auto bg-gradient-to-br from-[#131225] via-[#1a162a] to-[#2b1825]/70 p-8 text-slate-100"
             id="route-outlet"
           >
             <div class="grid h-full place-items-center text-center text-sm text-slate-400">
@@ -153,14 +154,14 @@
     </main>
 
     <footer class="border-t border-white/10 bg-slate-950/80 py-10">
-      <div class="mx-auto flex max-w-6xl flex-col gap-4 px-6 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
+      <div class="mx-auto flex max-w-7xl flex-col gap-4 px-6 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
         <p class="tracking-wide">
-          &copy; <span id="copyright-year"></span> Fenosys
+          &copy; <span id="copyright-year"></span> All rights reserved
         </p>
         <div class="flex gap-4">
-          <a class="transition hover:text-fenosys-200" href="#capabilities" data-route-link="capabilities">Product</a>
-          <a class="transition hover:text-fenosys-200" href="#workflow" data-route-link="workflow">Flow</a>
-          <a class="transition hover:text-fenosys-200" href="#insights" data-route-link="insights">Insights</a>
+          <a class="transition hover:text-brand-200" href="#capabilities" data-route-link="capabilities">Product</a>
+          <a class="transition hover:text-brand-200" href="#workflow" data-route-link="workflow">Flow</a>
+          <a class="transition hover:text-brand-200" href="#insights" data-route-link="insights">Insights</a>
         </div>
       </div>
     </footer>

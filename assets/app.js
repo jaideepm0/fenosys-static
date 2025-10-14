@@ -20,10 +20,10 @@ const markActiveLink = (route) => {
     const linkRoute = link.getAttribute("data-route-link");
     if (!linkRoute) return;
     const isActive = linkRoute === route;
-    link.classList.toggle("bg-fenosys-500/20", isActive);
+    link.classList.toggle("bg-brand-500/20", isActive);
     link.classList.toggle("text-white", isActive);
     link.classList.toggle("border", isActive);
-    link.classList.toggle("border-fenosys-400/50", isActive);
+    link.classList.toggle("border-brand-400/50", isActive);
     if (isActive) {
       link.setAttribute("aria-current", "page");
     } else {
