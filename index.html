@@ -28,36 +28,85 @@
             },
             colors: {
               brand: {
-                50: "#FFF5F2",
-                100: "#FEE9E0",
-                200: "#FBD3C0",
-                300: "#F7AF94",
-                400: "#F08668",
-                500: "#E25B41",
-                600: "#C44835",
-                700: "#9E3A2C",
-                800: "#7A2E26",
-                900: "#59231E",
+                50: "#FFF9F5",
+                100: "#FFE6D8",
+                200: "#FFCEB2",
+                300: "#FFB089",
+                400: "#FF8F65",
+                500: "#F56950",
+                600: "#D65140",
+                700: "#B23E38",
+                800: "#84312F",
+                900: "#5B2527",
               },
-              twilight: "#241F3F",
+              twilight: "#2B2140",
+              nightfall: "#1B1A2A",
             },
             boxShadow: {
-              "brand-glow": "0 50px 140px -50px rgba(224, 91, 65, 0.5)",
+              "brand-glow": "0 55px 160px -60px rgba(245, 105, 80, 0.45)",
             },
           },
         },
       };
     </script>
+    <style>
+      @keyframes fade-up {
+        0% {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes float-soft {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-6px);
+        }
+      }
+
+      @keyframes glow {
+        0%,
+        100% {
+          box-shadow: 0 0 0 rgba(245, 105, 80, 0.2);
+        }
+        50% {
+          box-shadow: 0 0 35px rgba(255, 176, 137, 0.4);
+        }
+      }
+
+      .animate-fade-up {
+        animation: fade-up 0.8s ease-out both;
+      }
+
+      .animate-fade-up-delay {
+        animation: fade-up 0.9s ease-out 0.2s both;
+      }
+
+      .animate-float-soft {
+        animation: float-soft 4s ease-in-out infinite;
+      }
+
+      .animate-glow {
+        animation: glow 4s ease-in-out infinite;
+      }
+    </style>
     <script defer src="assets/app.js"></script>
   </head>
   <body
-    class="min-h-screen bg-gradient-to-br from-[#121222] via-[#1b1629] to-[#2c1423] text-slate-100"
+    class="min-h-screen bg-gradient-to-br from-[#131327] via-[#1d1a33] to-[#2e1f2c] text-slate-100"
   >
     <header
       class="sticky top-0 z-30 border-b border-white/10 bg-slate-950/75 backdrop-blur-xl"
     >
       <nav
-        class="mx-auto flex max-w-7xl items-center gap-4 px-6 py-5"
+        class="mx-auto flex w-full max-w-[110rem] items-center gap-4 px-8 py-5"
       >
         <a
           class="flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 transition hover:border-brand-400/60 hover:text-white"
@@ -125,24 +174,24 @@
       </div>
     </header>
 
-    <main class="mx-auto flex max-w-7xl flex-col gap-12 px-6 pb-24 pt-16 lg:pt-24">
+    <main class="mx-auto flex w-full max-w-[110rem] flex-col gap-16 px-8 pb-28 pt-16 lg:pt-28">
       <section
-        class="flex min-h-[60vh] items-stretch justify-center rounded-[32px] border border-white/10 bg-white/5 p-8 shadow-brand-glow lg:p-14"
+        class="animate-fade-up flex min-h-[60vh] items-stretch justify-center rounded-[36px] border border-white/10 bg-white/10 p-10 shadow-brand-glow backdrop-blur-sm lg:p-16"
       >
         <div
-          class="flex w-full flex-col overflow-hidden rounded-[26px] border border-white/10 bg-slate-950/70 backdrop-blur-lg"
+          class="flex w-full flex-col overflow-hidden rounded-[28px] border border-white/10 bg-slate-950/70 backdrop-blur-lg"
         >
           <div class="flex items-center justify-between border-b border-white/10 px-6 py-4">
-            <div class="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.38em] text-brand-200">
-              <span class="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-tr from-brand-400 to-[#F7AF94] text-slate-950 font-bold">
-                f
+            <div class="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.26em] text-brand-200">
+              <span class="grid h-9 w-9 place-items-center">
+                <img src="assets/badge.svg" alt="Companion badge" class="h-9 w-9" />
               </span>
-              Preview window
+              Companion stream
             </div>
-            <span class="text-xs text-slate-400">Dynamic route preview</span>
+            <span class="text-xs text-slate-400">Simulated journey preview</span>
           </div>
           <div
-            class="flex-1 overflow-y-auto bg-gradient-to-br from-[#131225] via-[#1a162a] to-[#2b1825]/70 p-8 text-slate-100"
+            class="flex-1 overflow-y-auto bg-gradient-to-br from-[#151429] via-[#1f1a31] to-[#3a1f31]/70 p-10 text-slate-100"
             id="route-outlet"
           >
             <div class="grid h-full place-items-center text-center text-sm text-slate-400">
@@ -154,7 +203,7 @@
     </main>
 
     <footer class="border-t border-white/10 bg-slate-950/80 py-10">
-      <div class="mx-auto flex max-w-7xl flex-col gap-4 px-6 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
+      <div class="mx-auto flex w-full max-w-[110rem] flex-col gap-4 px-8 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
         <p class="tracking-wide">
           &copy; <span id="copyright-year"></span> All rights reserved
         </p>
