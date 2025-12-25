@@ -1,5 +1,70 @@
 {
   "id": "capabilities",
-  "contentType": "html",
-  "html": "<div class=\"space-y-16\">\n  <header class=\"space-y-4 max-w-3xl\">\n    <p class=\"eyebrow\">Layers that stay in lockstep</p>\n    <h2 class=\"text-3xl font-semibold leading-tight sm:text-4xl\">\n      The companion keeps conversational intuition and structured analytics perfectly aligned.\n    </h2>\n    <p class=\"muted\">\n      Behind every response, FastAPI coordinates secure access to datasets, DuckDB powers agile modelling, and async workers enrich results.\n      The LLM interprets intent, drafts strategy, and narrates outcomes—always with traceable artefacts you can revisit.\n    </p>\n  </header>\n\n  <section class=\"grid gap-6 lg:grid-cols-3\">\n    <article class=\"surface space-y-4 rounded-3xl p-6\">\n      <div class=\"flex items-center gap-3\">\n        <span class=\"chip\">01</span>\n        <span class=\"font-semibold\">Conversation canvas</span>\n      </div>\n      <p class=\"muted text-sm\">\n        Multi-turn threads capture prompts, decisions, and supporting files. Filters make it effortless to revisit a critical hypothesis,\n        a generated transformation plan, or a recommended experiment.\n      </p>\n      <ul class=\"muted space-y-1 text-sm\">\n        <li>• Memory that follows each storyline</li>\n        <li>• AI-crafted recaps for quick catch-up</li>\n        <li>• Instant branching for “what-if” explorations</li>\n      </ul>\n    </article>\n    <article class=\"surface space-y-4 rounded-3xl p-6\">\n      <div class=\"flex items-center gap-3\">\n        <span class=\"chip\">02</span>\n        <span class=\"font-semibold\">Model insight studio</span>\n      </div>\n      <p class=\"muted text-sm\">\n        Lightweight pipelines translate conversational intent into metrics, anomaly scans, and visuals across files, APIs, or web sources.\n        The companion explains each step so everyone understands the why—not just the what.\n      </p>\n      <ul class=\"muted space-y-1 text-sm\">\n        <li>• Inline commentary on every transformation</li>\n        <li>• Side-by-side metric and narrative comparisons</li>\n        <li>• Visual templates ready for export</li>\n      </ul>\n    </article>\n    <article class=\"surface space-y-4 rounded-3xl p-6\">\n      <div class=\"flex items-center gap-3\">\n        <span class=\"chip\">03</span>\n        <span class=\"font-semibold\">Companion control tower</span>\n      </div>\n      <p class=\"muted text-sm\">\n        Async workers run heavy lifting in the background: schedule refreshes, fetch external signals, and push summaries downstream.\n        Dashboards keep you aware of health, latency, and cost impact.\n      </p>\n      <ul class=\"muted space-y-1 text-sm\">\n        <li>• Queue visibility and retry orchestration</li>\n        <li>• Cost and usage trackers per user</li>\n        <li>• Webhook-ready briefings for instant sharing</li>\n      </ul>\n    </article>\n  </section>\n\n  <section class=\"surface grid gap-8 rounded-3xl p-10 lg:grid-cols-[1.1fr,0.9fr]\">\n    <div class=\"space-y-3\">\n      <p class=\"eyebrow\">Designed for real work</p>\n      <h3 class=\"text-2xl font-semibold\">Every layer communicates, so momentum never breaks.</h3>\n      <p class=\"muted\">\n        When you ask the companion for help, it understands your objective, checks data availability, spins analyses with DuckDB,\n        and loops in worker automations. You stay focused on the narrative—even as complexity grows.\n      </p>\n    </div>\n    <ul class=\"grid gap-4 text-sm\">\n      <li class=\"surface-soft rounded-2xl p-5 space-y-2\">\n        <span class=\"font-semibold\">Consistency</span>\n        <p class=\"muted\">\n          Shared prompt libraries and response patterns keep analyses aligned, whether you are starting fresh or building on a teammate’s work.\n        </p>\n      </li>\n      <li class=\"surface-soft rounded-2xl p-5 space-y-2\">\n        <span class=\"font-semibold\">Trust</span>\n        <p class=\"muted\">\n          Every suggestion links back to the source—spreadsheet, API response, or worker snapshot. Audit trails remain a click away.\n        </p>\n      </li>\n      <li class=\"surface-soft rounded-2xl p-5 space-y-2\">\n        <span class=\"font-semibold\">Moments of delight</span>\n        <p class=\"muted\">\n          Animated highlights and story cues draw attention to what matters, helping stakeholders grasp the narrative instantly.\n        </p>\n      </li>\n    </ul>\n  </section>\n</div>"
+  "meta": {
+    "title": "Capabilities | Immersive Analytics Workspace",
+    "description": "The companion keeps conversational intuition and structured analytics perfectly aligned."
+  },
+  "sections": [
+    {
+      "type": "header",
+      "eyebrow": "Layers that stay in lockstep",
+      "title": "The companion keeps conversational intuition and structured analytics perfectly aligned.",
+      "body": "Behind every response, FastAPI coordinates secure access to datasets, DuckDB powers agile modelling, and async workers enrich results.\nThe LLM interprets intent, drafts strategy, and narrates outcomes—always with traceable artefacts you can revisit."
+    },
+    {
+      "type": "feature-cards",
+      "items": [
+        {
+          "chip": "01",
+          "title": "Conversation canvas",
+          "body": "Multi-turn threads capture prompts, decisions, and supporting files. Filters make it effortless to revisit a critical hypothesis, a generated transformation plan, or a recommended experiment.",
+          "bullets": [
+            "Memory that follows each storyline",
+            "AI-crafted recaps for quick catch-up",
+            "Instant branching for “what-if” explorations"
+          ]
+        },
+        {
+          "chip": "02",
+          "title": "Model insight studio",
+          "body": "Lightweight pipelines translate conversational intent into metrics, anomaly scans, and visuals across files, APIs, or web sources. The companion explains each step so everyone understands the why—not just the what.",
+          "bullets": [
+            "Inline commentary on every transformation",
+            "Side-by-side metric and narrative comparisons",
+            "Visual templates ready for export"
+          ]
+        },
+        {
+          "chip": "03",
+          "title": "Companion control tower",
+          "body": "Async workers run heavy lifting in the background: schedule refreshes, fetch external signals, and push summaries downstream. Dashboards in the UI keep you aware of health, latency, and cost impact.",
+          "bullets": [
+            "Queue visibility and retry orchestration",
+            "Cost and usage trackers per user",
+            "Webhook-ready briefings for instant sharing"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "split-list",
+      "eyebrow": "Designed for real work",
+      "title": "Every layer communicates, so you never lose momentum.",
+      "body": "When you ask the companion for help, it understands your objective, checks data availability, spins analyses with DuckDB,\nand loops in worker automations. You stay focused on the narrative—even as complexity grows.",
+      "items": [
+        {
+          "title": "Consistency",
+          "body": "Shared prompt libraries and response patterns keep analyses aligned, whether you are starting fresh or building on a teammate’s work."
+        },
+        {
+          "title": "Trust",
+          "body": "Every suggestion links back to the source—whether it was a spreadsheet, API response, or worker-enriched snapshot. Audit trails remain a click away."
+        },
+        {
+          "title": "Moments of delight",
+          "body": "Animated highlights and story cues draw attention to what matters, helping stakeholders grasp the narrative instantly."
+        }
+      ]
+    }
+  ]
 }

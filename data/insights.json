@@ -1,5 +1,79 @@
 {
   "id": "insights",
-  "contentType": "html",
-  "html": "<div class=\"space-y-16\">\n  <header class=\"space-y-4 max-w-3xl\">\n    <p class=\"eyebrow\">Insight intelligence</p>\n    <h2 class=\"text-3xl font-semibold leading-tight sm:text-4xl\">\n      Dashboards stay alive with narrative context, not just charts.\n    </h2>\n    <p class=\"muted\">\n      Usage, quality, and momentum are measured together. The companion reveals where attention goes, which prompts deliver impact,\n      and how costs are trending—all while linking back to the exact conversations that created each insight.\n    </p>\n  </header>\n\n  <div class=\"grid gap-6 lg:grid-cols-[1.35fr,0.75fr]\">\n    <article class=\"surface space-y-6 rounded-3xl p-6\">\n      <div class=\"flex items-center justify-between text-xs uppercase tracking-[0.24em]\">\n        <span class=\"muted\">Companion analytics</span>\n        <span class=\"chip\">Live view</span>\n      </div>\n      <p class=\"muted text-sm\">\n        Trace the health of sessions, prompts, API fetches, and downstream actions. Filter by team, data domain, or campaign and understand how the assistant amplifies impact.\n      </p>\n      <dl class=\"surface-soft grid gap-4 rounded-2xl p-6 text-sm sm:grid-cols-3\">\n        <div>\n          <dt class=\"muted text-xs uppercase tracking-[0.2em]\">Insight turnarounds</dt>\n          <dd class=\"mt-2 text-2xl font-semibold\">4.6× faster</dd>\n        </div>\n        <div>\n          <dt class=\"muted text-xs uppercase tracking-[0.2em]\">Follow-up adoption</dt>\n          <dd class=\"mt-2 text-2xl font-semibold\">78% actions</dd>\n        </div>\n        <div>\n          <dt class=\"muted text-xs uppercase tracking-[0.2em]\">LLM cost per run</dt>\n          <dd class=\"mt-2 text-2xl font-semibold\">$0.05–$0.10</dd>\n        </div>\n      </dl>\n      <div class=\"surface-soft rounded-2xl p-6 text-sm\">\n        <p class=\"font-semibold\">Narrative snapshots</p>\n        <p class=\"muted mt-2\">\n          Each card blends metrics with the conversation that produced them. Jump directly to the prompt, the transformation plan, or the async worker run driving the result.\n        </p>\n      </div>\n    </article>\n\n    <article class=\"surface space-y-5 rounded-3xl p-6\">\n      <div class=\"flex items-center justify-between text-xs uppercase tracking-[0.24em]\">\n        <span class=\"muted\">Automation health</span>\n        <span class=\"chip\">Steady</span>\n      </div>\n      <p class=\"muted text-sm\">\n        Monitor worker queues, job retries, polling cadence, and refresh cycles. When the companion escalates a heavy task, you can see the outcome and cost impact immediately.\n      </p>\n      <ul class=\"space-y-3 text-sm\">\n        <li class=\"surface-soft rounded-2xl px-4 py-3 flex items-center justify-between\">\n          <span class=\"muted\">Ingestion enrichments</span><span class=\"font-semibold text-[var(--accent-mid)]\">Flowing</span>\n        </li>\n        <li class=\"surface-soft rounded-2xl px-4 py-3 flex items-center justify-between\">\n          <span class=\"muted\">Worker retries</span><span class=\"font-semibold text-[var(--accent-mid)]\">Minimal</span>\n        </li>\n        <li class=\"surface-soft rounded-2xl px-4 py-3 flex items-center justify-between\">\n          <span class=\"muted\">Narrative pushes</span><span class=\"font-semibold text-[var(--accent-mid)]\">On schedule</span>\n        </li>\n      </ul>\n      <p class=\"surface-soft rounded-2xl p-5 text-xs text-[var(--fg-muted)]\">\n        Configure alerts to nudge the right channel when usage spikes, costs approach thresholds, or momentum drifts.\n      </p>\n    </article>\n  </div>\n\n  <section class=\"surface grid gap-6 rounded-3xl p-10 lg:grid-cols-[1.1fr,0.9fr]\">\n    <div class=\"space-y-3\">\n      <p class=\"eyebrow\">Story-first delivery</p>\n      <h3 class=\"text-2xl font-semibold\">Insights arrive as briefings your stakeholders can act on.</h3>\n      <p class=\"muted\">\n        The companion pairs each data update with language crafted for the audience it serves. It cites sources, anticipates objections, and recommends next moves grounded in data pulled from files, APIs, and authorised web captures.\n      </p>\n    </div>\n    <ul class=\"grid gap-4 text-sm\">\n      <li class=\"surface-soft rounded-2xl p-5 space-y-2\">\n        <span class=\"font-semibold\">Contextual recall</span>\n        <p class=\"muted\">Jump from a chart back to the conversation that birthed it. Every insight links to prompts, transformations, API calls, and worker outputs.</p>\n      </li>\n      <li class=\"surface-soft rounded-2xl p-5 space-y-2\">\n        <span class=\"font-semibold\">Audience tuning</span>\n        <p class=\"muted\">Toggle tone and depth per audience while preserving the underlying facts. The assistant rewrites copy instantly.</p>\n      </li>\n      <li class=\"surface-soft rounded-2xl p-5 space-y-2\">\n        <span class=\"font-semibold\">Momentum archive</span>\n        <p class=\"muted\">Review how decisions evolved over time, identify seasonal patterns, and spotlight the conversations that moved the needle most.</p>\n      </li>\n    </ul>\n  </section>\n</div>"
+  "meta": {
+    "title": "Insight intelligence | Immersive Analytics Workspace",
+    "description": "Dashboards stay alive with narrative context, not just charts."
+  },
+  "sections": [
+    {
+      "type": "header",
+      "eyebrow": "Insight intelligence",
+      "title": "Dashboards stay alive with narrative context, not just charts.",
+      "body": "Usage, quality, and momentum are measured together. The companion reveals where attention goes, which prompts deliver impact,\nand how costs are trending—all while linking back to the exact conversations that created each insight."
+    },
+    {
+      "type": "metrics-grid",
+      "primary": {
+        "label": "Companion analytics",
+        "badge": "Live view",
+        "body": "Trace the health of sessions, prompts, API fetches, and downstream actions. Filter by team, data domain, or campaign and understand how the assistant is amplifying impact across the organisation.",
+        "stats": [
+          {
+            "label": "Insight turnarounds",
+            "value": "4.6× faster"
+          },
+          {
+            "label": "Follow-up adoption",
+            "value": "78% actions"
+          },
+          {
+            "label": "LLM cost per run",
+            "value": "$0.05–$0.10"
+          }
+        ],
+        "noteTitle": "Narrative snapshots",
+        "noteBody": "Each card blends metrics with the conversation that produced them. Jump directly to the prompt, the transformation plan, or the async worker run that impacted the result."
+      },
+      "secondary": {
+        "label": "Automation health",
+        "badge": "Steady",
+        "body": "Monitor worker queues, job retries, API polling cadence, and refresh cycles. When the companion escalates a heavy task, you can see the outcome and cost impact immediately.",
+        "items": [
+          {
+            "label": "Ingestion enrichments",
+            "value": "Flowing"
+          },
+          {
+            "label": "Worker retries",
+            "value": "Minimal"
+          },
+          {
+            "label": "Narrative pushes",
+            "value": "On schedule"
+          }
+        ],
+        "note": "Configure alerts to ping the right channel when usage spikes, cost budgets are close, or momentum slips."
+      }
+    },
+    {
+      "type": "split-list",
+      "eyebrow": "Story-first delivery",
+      "title": "Insights arrive as briefings your stakeholders can act on.",
+      "body": "The companion pairs each data update with language crafted for the audience it serves—operators, executives, or partners. It cites sources, anticipates objections, and recommends next moves grounded in data pulled from files, APIs, and authorised web captures.",
+      "items": [
+        {
+          "title": "Contextual recall",
+          "body": "Jump from a chart back to the conversation that birthed it. Every insight links to prompts, transformations, API calls, and worker outputs."
+        },
+        {
+          "title": "Audience tuning",
+          "body": "Toggle tone and depth per audience while preserving the underlying facts. The assistant rewrites copy instantly."
+        },
+        {
+          "title": "Momentum archive",
+          "body": "Review how decisions evolved over time, identify seasonal patterns, and spotlight the conversations that moved the needle most."
+        }
+      ]
+    }
+  ]
 }

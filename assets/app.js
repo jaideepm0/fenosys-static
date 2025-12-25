@@ -133,96 +133,15 @@
   }
 
   function animateRouteOut() {
-    if (!motionReady() || !outlet || !outlet.children.length) return Promise.resolve();
-    const items = Array.from(outlet.children);
-    return new Promise((resolve) => {
-      window.gsap.to(items, {
-        autoAlpha: 0,
-        y: -12,
-        duration: 0.24,
-        ease: "power1.out",
-        stagger: 0.04,
-        overwrite: "auto",
-        onComplete: resolve,
-      });
-    });
+    return Promise.resolve();
   }
 
   function animateRouteIn() {
-    if (!motionReady() || !outlet || !outlet.children.length) return;
-    const items = Array.from(outlet.children);
-    window.gsap.fromTo(
-      items,
-      { autoAlpha: 0, y: 16 },
-      { autoAlpha: 1, y: 0, duration: 0.5, ease: "power2.out", stagger: 0.06, overwrite: "auto" }
-    );
+    return;
   }
 
   function setupRouteAnimations(scope = document) {
-    if (!motionReady()) return;
-    registerMotionPlugins();
-    teardownRouteAnimations();
-    motionState.routeContext = window.gsap.context(() => {
-      const surfaces = window.gsap.utils.toArray(scope.querySelectorAll(".surface, .surface-soft"));
-      surfaces.forEach((surface, index) => {
-        const delay = Math.min(index * 0.04, 0.28);
-        window.gsap.from(surface, {
-          autoAlpha: 0,
-          y: 28,
-          scale: 0.985,
-          duration: 0.8,
-          ease: "power3.out",
-          delay,
-          scrollTrigger: scrollTriggerReady()
-            ? {
-                trigger: surface,
-                start: "top 85%",
-                toggleActions: "play none none reverse",
-              }
-            : undefined,
-        });
-      });
-
-      const headings = window.gsap.utils.toArray(
-        scope.querySelectorAll("h1, h2, h3, .eyebrow, [data-motion='headline']")
-      );
-      headings.forEach((heading) => {
-        window.gsap.from(heading, {
-          autoAlpha: 0,
-          y: 18,
-          duration: 0.6,
-          ease: "power2.out",
-          scrollTrigger: scrollTriggerReady()
-            ? {
-                trigger: heading,
-                start: "top 90%",
-                toggleActions: "play none none reverse",
-              }
-            : undefined,
-        });
-      });
-
-      const buttons = window.gsap.utils.toArray(scope.querySelectorAll(".accent-btn, .outline-btn, .theme-toggle"));
-      buttons.forEach((button) => {
-        window.gsap.from(button, {
-          autoAlpha: 0,
-          y: 16,
-          duration: 0.5,
-          ease: "power2.out",
-          scrollTrigger: scrollTriggerReady()
-            ? {
-                trigger: button,
-                start: "top 92%",
-                toggleActions: "play none none reverse",
-              }
-            : undefined,
-        });
-      });
-
-      if (scrollTriggerReady()) {
-        window.ScrollTrigger.refresh();
-      }
-    }, scope);
+    return;
   }
 
   function attachSurfaceHoverAnimations(scope = document) {
@@ -264,6 +183,347 @@
     if (outlet) attachSurfaceHoverAnimations(outlet);
     setupRouteAnimations(outlet || document);
   }
+
+  const markdownReady = () => typeof window !== "undefined" && typeof window.marked !== "undefined";
+  const md = (value) => {
+    if (!value) return "";
+    if (!markdownReady()) return value;
+    return window.marked.parse(value);
+  };
+  const mdInline = (value) => {
+    if (!value) return "";
+    if (!markdownReady()) return value;
+    return window.marked.parseInline(value);
+  };
+  if (markdownReady() && typeof window.marked.setOptions === "function") {
+    window.marked.setOptions({ mangle: false, headerIds: false });
+  }
+
+  const block = (value, className = "") => {
+    if (!value) return "";
+    const classes = ["markdown", className].filter(Boolean).join(" ");
+    return `<div class="${classes}">${md(value)}</div>`;
+  };
+
+  const arrowIcon = `
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12l-7.5 7.5M3 12h18" />
+    </svg>
+  `;
+
+  const renderHero = (section = {}) => {
+    const ctas = (section.ctas || [])
+      .map((cta) => {
+        const route = cta.route || (cta.href && cta.href.startsWith("#") ? cta.href.slice(1) : "");
+        const routeAttr = route ? ` data-route-link="${route}"` : "";
+        const variant = cta.variant === "outline" ? "outline-btn" : "accent-btn";
+        const icon = cta.icon === "arrow" ? arrowIcon : "";
+        return `
+          <a href="${cta.href || "#"}"${routeAttr} class="${variant}">
+            ${mdInline(cta.label)}
+            ${icon}
+          </a>
+        `;
+      })
+      .join("");
+
+    const stats = (section.stats || [])
+      .map(
+        (stat) => `
+          <div class="space-y-1">
+            <p class="text-sm uppercase tracking-[0.2em] muted">${mdInline(stat.label)}</p>
+            <p class="text-2xl font-semibold">${mdInline(stat.value)}</p>
+            <p class="muted text-sm">${mdInline(stat.body)}</p>
+          </div>
+        `
+      )
+      .join("");
+
+    const features = (section.panel?.features || [])
+      .map(
+        (feature) => `
+          <div class="surface-soft rounded-2xl p-5 space-y-2">
+            <p class="font-semibold">${mdInline(feature.title)}</p>
+            <p class="muted text-sm">${mdInline(feature.body)}</p>
+          </div>
+        `
+      )
+      .join("");
+
+    return `
+      <section class="grid gap-10 lg:grid-cols-[1.2fr,0.9fr] lg:gap-20">
+        <div class="space-y-8">
+          <div class="space-y-4">
+            ${section.eyebrow ? `<p class="eyebrow">${mdInline(section.eyebrow)}</p>` : ""}
+            ${
+              section.title
+                ? `<h1 class="text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">${mdInline(section.title)}</h1>`
+                : ""
+            }
+            ${section.lead ? `<div class="muted max-w-3xl text-base leading-relaxed markdown">${md(section.lead)}</div>` : ""}
+          </div>
+
+          ${ctas ? `<div class="flex flex-wrap gap-3">${ctas}</div>` : ""}
+
+          ${stats ? `<div class="surface-soft grid gap-4 rounded-3xl p-6 md:grid-cols-3">${stats}</div>` : ""}
+        </div>
+
+        <div class="surface grid gap-5 rounded-3xl p-8">
+          <div class="space-y-3">
+            ${section.panel?.eyebrow ? `<p class="eyebrow">${mdInline(section.panel.eyebrow)}</p>` : ""}
+            ${section.panel?.title ? `<h2 class="text-2xl font-semibold">${mdInline(section.panel.title)}</h2>` : ""}
+            ${section.panel?.body ? `<div class="muted markdown">${md(section.panel.body)}</div>` : ""}
+          </div>
+          ${features ? `<div class="grid gap-4 sm:grid-cols-2">${features}</div>` : ""}
+        </div>
+      </section>
+    `;
+  };
+
+  const renderStory = (section = {}) => {
+    const playbookItems = (section.playbook?.items || [])
+      .map(
+        (item) =>
+          `<li class="flex items-center justify-between"><span>${mdInline(item.label)}</span><span>${mdInline(
+            item.status
+          )}</span></li>`
+      )
+      .join("");
+
+    return `
+      <section class="glow-shell">
+        <div class="surface rounded-[28px] p-8 sm:p-10 space-y-6">
+          ${
+            section.prompt
+              ? `
+            <div class="surface-soft rounded-2xl p-5 text-sm space-y-2">
+              <p class="font-semibold">${mdInline(section.prompt.label)}</p>
+              <p class="muted">${mdInline(section.prompt.body)}</p>
+            </div>
+          `
+              : ""
+          }
+
+          ${
+            section.response
+              ? `
+            <div class="surface-soft rounded-2xl p-6 space-y-3 text-sm">
+              <p class="font-semibold">${mdInline(section.response.label)}</p>
+              ${block(section.response.body, "muted")}
+            </div>
+          `
+              : ""
+          }
+
+          ${
+            section.playbook
+              ? `
+            <div class="surface-soft rounded-2xl p-5 text-xs space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-semibold uppercase tracking-[0.24em]">${mdInline(section.playbook.label)}</span>
+                <span class="chip">${mdInline(section.playbook.status)}</span>
+              </div>
+              ${playbookItems ? `<ul class="muted space-y-1 text-sm">${playbookItems}</ul>` : ""}
+            </div>
+          `
+              : ""
+          }
+
+          ${
+            section.quote
+              ? `
+            <div class="surface-soft rounded-2xl p-6 text-sm space-y-3">
+              <p class="font-semibold">${mdInline(section.quote.label)}</p>
+              <blockquote class="muted italic">${mdInline(section.quote.body)}</blockquote>
+            </div>
+          `
+              : ""
+          }
+        </div>
+      </section>
+    `;
+  };
+
+  const renderHeader = (section = {}) => `
+    <header class="space-y-4 max-w-3xl">
+      ${section.eyebrow ? `<p class="eyebrow">${mdInline(section.eyebrow)}</p>` : ""}
+      ${section.title ? `<h2 class="text-3xl font-semibold leading-tight sm:text-4xl">${mdInline(section.title)}</h2>` : ""}
+      ${section.body ? `<div class="muted markdown">${md(section.body)}</div>` : ""}
+    </header>
+  `;
+
+  const renderSteps = (section = {}) => {
+    const items = (section.items || [])
+      .map(
+        (item) => `
+        <li class="surface space-y-3 rounded-3xl p-6">
+          <div class="flex items-center justify-between">
+            <span class="chip">${mdInline(item.step)}</span>
+            <span class="chip uppercase tracking-[0.24em]">${mdInline(item.label)}</span>
+          </div>
+          <h3 class="text-lg font-semibold">${mdInline(item.title)}</h3>
+          <p class="muted text-sm">${mdInline(item.body)}</p>
+        </li>
+      `
+      )
+      .join("");
+    return `<ol class="grid gap-6 lg:grid-cols-2">${items}</ol>`;
+  };
+
+  const renderSplitList = (section = {}) => {
+    const items = (section.items || [])
+      .map(
+        (item) => `
+        <li class="surface-soft rounded-2xl p-5 space-y-2">
+          <span class="font-semibold">${mdInline(item.title)}</span>
+          <p class="muted">${mdInline(item.body)}</p>
+        </li>
+      `
+      )
+      .join("");
+
+    return `
+      <section class="surface grid gap-6 rounded-3xl p-10 lg:grid-cols-[1.1fr,0.9fr]">
+        <div class="space-y-3">
+          ${section.eyebrow ? `<p class="eyebrow">${mdInline(section.eyebrow)}</p>` : ""}
+          ${section.title ? `<h3 class="text-2xl font-semibold">${mdInline(section.title)}</h3>` : ""}
+          ${section.body ? `<div class="muted markdown">${md(section.body)}</div>` : ""}
+        </div>
+        ${items ? `<ul class="grid gap-4 text-sm">${items}</ul>` : ""}
+      </section>
+    `;
+  };
+
+  const renderFeatureCards = (section = {}) => {
+    const items = (section.items || [])
+      .map((item) => {
+        const bullets = (item.bullets || [])
+          .map((bullet) => `<li>&bull; ${mdInline(bullet)}</li>`)
+          .join("");
+        return `
+        <article class="surface space-y-4 rounded-3xl p-6">
+          <div class="flex items-center gap-3">
+            <span class="chip">${mdInline(item.chip)}</span>
+            <span class="font-semibold">${mdInline(item.title)}</span>
+          </div>
+          <p class="muted text-sm">${mdInline(item.body)}</p>
+          ${bullets ? `<ul class="muted space-y-1 text-sm">${bullets}</ul>` : ""}
+        </article>
+      `;
+      })
+      .join("");
+    return `<section class="grid gap-6 lg:grid-cols-3">${items}</section>`;
+  };
+
+  const renderFaqGrid = (section = {}) => {
+    const items = (section.items || [])
+      .map(
+        (item) => `
+        <article class="surface space-y-3 rounded-3xl p-6">
+          <h3 class="text-lg font-semibold">${mdInline(item.title)}</h3>
+          <p class="muted text-sm">${mdInline(item.body)}</p>
+        </article>
+      `
+      )
+      .join("");
+    return `<div class="grid gap-6 lg:grid-cols-3">${items}</div>`;
+  };
+
+  const renderCtaCard = (section = {}) => `
+    <div class="surface space-y-3 rounded-3xl p-8">
+      ${section.eyebrow ? `<p class="eyebrow">${mdInline(section.eyebrow)}</p>` : ""}
+      ${section.title ? `<h3 class="text-2xl font-semibold">${mdInline(section.title)}</h3>` : ""}
+      ${section.body ? `<div class="muted markdown">${md(section.body)}</div>` : ""}
+    </div>
+  `;
+
+  const renderMetricsGrid = (section = {}) => {
+    const primary = section.primary || {};
+    const secondary = section.secondary || {};
+    const stats = (primary.stats || [])
+      .map(
+        (stat) => `
+        <div>
+          <dt class="muted text-xs uppercase tracking-[0.2em]">${mdInline(stat.label)}</dt>
+          <dd class="mt-2 text-2xl font-semibold">${mdInline(stat.value)}</dd>
+        </div>
+      `
+      )
+      .join("");
+    const primaryNote =
+      primary.noteTitle || primary.noteBody
+        ? `
+      <div class="surface-soft rounded-2xl p-6 text-sm">
+        ${primary.noteTitle ? `<p class="font-semibold">${mdInline(primary.noteTitle)}</p>` : ""}
+        ${primary.noteBody ? block(primary.noteBody, "muted mt-2") : ""}
+      </div>
+    `
+        : "";
+    const statusItems = (secondary.items || [])
+      .map(
+        (item) => `
+        <li class="surface-soft rounded-2xl px-4 py-3 flex items-center justify-between">
+          <span class="muted">${mdInline(item.label)}</span><span class="font-semibold text-[var(--accent-mid)]">${mdInline(
+            item.value
+          )}</span>
+        </li>
+      `
+      )
+      .join("");
+
+    return `
+      <div class="grid gap-6 lg:grid-cols-[1.35fr,0.75fr]">
+        <article class="surface space-y-6 rounded-3xl p-6">
+          <div class="flex items-center justify-between text-xs uppercase tracking-[0.24em]">
+            <span class="muted">${mdInline(primary.label)}</span>
+            <span class="chip">${mdInline(primary.badge)}</span>
+          </div>
+          ${primary.body ? `<div class="muted markdown text-sm">${md(primary.body)}</div>` : ""}
+          ${stats ? `<dl class="surface-soft grid gap-4 rounded-2xl p-6 text-sm sm:grid-cols-3">${stats}</dl>` : ""}
+          ${primaryNote}
+        </article>
+
+        <article class="surface space-y-5 rounded-3xl p-6">
+          <div class="flex items-center justify-between text-xs uppercase tracking-[0.24em]">
+            <span class="muted">${mdInline(secondary.label)}</span>
+            <span class="chip">${mdInline(secondary.badge)}</span>
+          </div>
+          ${secondary.body ? `<div class="muted markdown text-sm">${md(secondary.body)}</div>` : ""}
+          ${statusItems ? `<ul class="space-y-3 text-sm">${statusItems}</ul>` : ""}
+          ${
+            secondary.note
+              ? `<p class="surface-soft rounded-2xl p-5 text-xs text-[var(--fg-muted)]">${mdInline(secondary.note)}</p>`
+              : ""
+          }
+        </article>
+      </div>
+    `;
+  };
+
+  const renderSection = (section = {}) => {
+    switch (section.type) {
+      case "hero":
+        return renderHero(section);
+      case "story":
+        return renderStory(section);
+      case "header":
+        return renderHeader(section);
+      case "steps":
+        return renderSteps(section);
+      case "split-list":
+        return renderSplitList(section);
+      case "feature-cards":
+        return renderFeatureCards(section);
+      case "faq-grid":
+        return renderFaqGrid(section);
+      case "cta-card":
+        return renderCtaCard(section);
+      case "metrics-grid":
+        return renderMetricsGrid(section);
+      default:
+        return "";
+    }
+  };
 
   const DEFAULT_ROUTE = "home";
   const ROUTES = {
@@ -328,6 +588,25 @@
     if (outlet) outlet.innerHTML = html;
   };
 
+  const updateMeta = (meta = {}) => {
+    if (meta.title) document.title = meta.title;
+    if (meta.description) {
+      const descriptionTag = document.querySelector('meta[name="description"]');
+      if (descriptionTag) descriptionTag.setAttribute("content", meta.description);
+    }
+  };
+
+  const renderRoute = (data) => {
+    if (!data || !Array.isArray(data.sections)) {
+      renderError("Invalid content payload");
+      return;
+    }
+    updateMeta(data.meta || {});
+    const content = data.sections.map(renderSection).join("");
+    render(`<div class="space-y-16">${content}</div>`);
+    postRouteRender();
+  };
+
   const renderError = (message) => {
     render(`
       <div class="flex h-full items-center justify-center">
@@ -342,23 +621,21 @@
 
   const parseRoutePayload = async (response) => {
     const contentType = response.headers.get("content-type") || "";
-    if (contentType.includes("application/json") || response.url.endsWith(".json")) {
-      const data = await response.json();
-      if (data?.contentType !== "html" || typeof data.html !== "string") {
-        throw new Error("Invalid content payload");
-      }
-      return data.html;
+    if (!contentType.includes("application/json") && !response.url.endsWith(".json")) {
+      throw new Error("Expected JSON content");
     }
-    return response.text();
+    const data = await response.json();
+    if (!data || typeof data !== "object") throw new Error("Invalid content payload");
+    return data;
   };
 
   const fetchRoute = async (resource) => {
     if (routeCache.has(resource)) return routeCache.get(resource);
     const response = await fetch(resource, { cache: "no-cache" });
     if (!response.ok) throw new Error(`Failed to fetch ${resource}`);
-    const html = await parseRoutePayload(response);
-    routeCache.set(resource, html);
-    return html;
+    const data = await parseRoutePayload(response);
+    routeCache.set(resource, data);
+    return data;
   };
 
   const loadRoute = async (route) => {
@@ -368,9 +645,8 @@
     if (motionReady()) teardownRouteAnimations();
     await animateRouteOut();
     try {
-      const html = await fetchRoute(resource);
-      render(html);
-      postRouteRender();
+      const data = await fetchRoute(resource);
+      renderRoute(data);
     } catch (error) {
       renderError(error.message ?? "Unable to load content");
     }
@@ -432,7 +708,7 @@
       if (route === DEFAULT_ROUTE || routeCache.has(resource)) return;
       fetch(resource, { cache: "no-cache" })
         .then((response) => (response.ok ? parseRoutePayload(response) : Promise.reject()))
-        .then((html) => routeCache.set(resource, html))
+        .then((data) => routeCache.set(resource, data))
         .catch(() => {});
     });
   };

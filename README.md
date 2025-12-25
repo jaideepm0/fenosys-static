@@ -12,9 +12,9 @@ Navigate to `http://localhost:5173` to preview the site.
 
 ## Structure
 
-- `index.html` — shell with navigation, dynamic outlet, Tailwind CDN setup, and gradient backdrop.
-- `assets/app.js` — hash-based router that fetches JSON payloads and renders the HTML content.
-- `data/` — JSON content payloads for each route (`home`, `capabilities`, `workflow`, `insights`, `faq`).
+- `index.html` — shell with navigation, dynamic outlet, Tailwind CDN setup, gradient backdrop, and markdown parser CDN.
+- `assets/app.js` — hash-based router that fetches JSON payloads and renders HTML from markdown/metadata.
+- `data/` — JSON content payloads (metadata + markdown/plain text) for each route (`home`, `capabilities`, `workflow`, `insights`, `faq`).
 - `assets/logo.svg` — light-orange emblem used across the layout.
 
 ## Deploying to GitHub Pages
