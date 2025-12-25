@@ -267,11 +267,11 @@
 
   const DEFAULT_ROUTE = "home";
   const ROUTES = {
-    home: "pages/home.html",
-    capabilities: "pages/capabilities.html",
-    workflow: "pages/workflow.html",
-    insights: "pages/insights.html",
-    faq: "pages/faq.html",
+    home: "data/home.json",
+    capabilities: "data/capabilities.json",
+    workflow: "data/workflow.json",
+    insights: "data/insights.json",
+    faq: "data/faq.json",
   };
 
   const outlet = document.getElementById("route-outlet");
@@ -340,11 +340,23 @@
     postRouteRender();
   };
 
+  const parseRoutePayload = async (response) => {
+    const contentType = response.headers.get("content-type") || "";
+    if (contentType.includes("application/json") || response.url.endsWith(".json")) {
+      const data = await response.json();
+      if (data?.contentType !== "html" || typeof data.html !== "string") {
+        throw new Error("Invalid content payload");
+      }
+      return data.html;
+    }
+    return response.text();
+  };
+
   const fetchRoute = async (resource) => {
     if (routeCache.has(resource)) return routeCache.get(resource);
     const response = await fetch(resource, { cache: "no-cache" });
     if (!response.ok) throw new Error(`Failed to fetch ${resource}`);
-    const html = await response.text();
+    const html = await parseRoutePayload(response);
     routeCache.set(resource, html);
     return html;
   };
@@ -419,7 +431,7 @@
     Object.entries(ROUTES).forEach(([route, resource]) => {
       if (route === DEFAULT_ROUTE || routeCache.has(resource)) return;
       fetch(resource, { cache: "no-cache" })
-        .then((response) => (response.ok ? response.text() : Promise.reject()))
+        .then((response) => (response.ok ? parseRoutePayload(response) : Promise.reject()))
         .then((html) => routeCache.set(resource, html))
         .catch(() => {});
     });
