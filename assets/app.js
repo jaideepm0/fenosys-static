@@ -154,12 +154,9 @@
       element.dataset.hoverShadowBase = baseShadow;
       element.addEventListener("pointerenter", () => {
         if (pointerState.media && !pointerState.media.matches) return;
-        const elevatedShadow =
-          (root.dataset.theme || "light") === "dark"
-            ? "0 26px 50px -34px rgba(8, 10, 30, 0.7)"
-            : "0 22px 46px -34px rgba(148, 118, 255, 0.32)";
+        const elevatedShadow = element.dataset.hoverShadowBase || baseShadow;
         window.gsap.to(element, {
-          y: -4,
+          y: 0,
           boxShadow: elevatedShadow,
           duration: 0.45,
           ease: "power2.out",

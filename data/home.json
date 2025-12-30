@@ -28,17 +28,17 @@
       "stats": [
         {
           "label": "Prompt to plan",
-          "value": "Under 5 min",
+          "value": "within minutes",
           "body": "Guided steps to move from question to analysis."
         },
         {
           "label": "Reusable playbooks",
-          "value": "45+ ready",
+          "value": "100% customizable",
           "body": "Kick off with templates tuned to your domain."
         },
         {
           "label": "Format agnostic",
-          "value": "Python-friendly",
+          "value": "Any data source",
           "body": "Built to reason across tabular data, documents, and APIs—if Python can reach the source, the companion treats it as first-class."
         }
       ],
@@ -52,7 +52,7 @@
             "body": "Prompt templates align the LLM with your domain, steering it toward measurable outcomes and guardrails."
           },
           {
-            "title": "FastAPI orchestration",
+            "title": "System orchestration",
             "body": "Secure APIs broker dataset access, webhook calls, cost tracking, and user context. Role-aware policies and audit logs keep every response safe and reproducible."
           },
           {

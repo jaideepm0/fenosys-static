@@ -9,7 +9,7 @@
       "type": "header",
       "eyebrow": "Layers that stay in lockstep",
       "title": "The companion keeps conversational intuition and structured analytics perfectly aligned.",
-      "body": "Behind every response, FastAPI coordinates secure access to datasets, DuckDB powers agile modelling, and async workers enrich results.\nThe LLM interprets intent, drafts strategy, and narrates outcomes—always with traceable artefacts you can revisit."
+      "body": "Behind every response application coordinates secure access to datasets and powers agile modelling, and async workers enrich results.\nThe LLM interprets intent, drafts strategy, and narrates outcomes—always with traceable artefacts you can revisit."
     },
     {
       "type": "feature-cards",

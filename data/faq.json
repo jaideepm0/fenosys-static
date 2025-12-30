@@ -19,7 +19,7 @@
         },
         {
           "title": "Will it respect our data governance rules?",
-          "body": "Yes. Access policies live in the API layer, DuckDB connections are scoped per session, and workers operate with scoped secrets. Every action is recorded in an audit trail you can export."
+          "body": "Yes. Access policies live in the API layer, database connections are scoped per session, and workers operate with scoped secrets. Every action is recorded in an audit trail you can export. moreover it's ran on your own infrastructure."
         },
         {
           "title": "What if the analysis takes longer than expected?",
@@ -35,7 +35,7 @@
         },
         {
           "title": "Where do we start?",
-          "body": "Spin up the sample playbooks, connect a DuckDB source, and run through the onboarding guide. You’ll see how the LLM, FastAPI services, and workers collaborate within minutes."
+          "body": "Spin up the sample playbooks, connect to any data source, and run through the onboarding guide. You’ll see how the LLM services, and workers collaborate within minutes."
         }
       ]
     },

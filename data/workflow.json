@@ -9,7 +9,7 @@
       "type": "header",
       "eyebrow": "Companion workflow",
       "title": "Four deliberate beats carry an idea from prompt to action.",
-      "body": "The flow mirrors how analysts actually work—explore, iterate, validate, deliver—while the platform takes care of orchestration.\nFastAPI secures access, DuckDB models the data, workers enrich context, and the LLM narrates the story."
+      "body": "The flow mirrors how analysts actually work—explore, iterate, validate, deliver—while the platform takes care of orchestration.\n system secures access, models the data, workers enrich context, and the LLM narrates the story."
     },
     {
       "type": "steps",
@@ -44,11 +44,11 @@
       "type": "split-list",
       "eyebrow": "Under the hood",
       "title": "Automation keeps pace with your curiosity.",
-      "body": "FastAPI routes requests to the right services, DuckDB handles transformations in-memory, and workers take on asynchronous enrichment.\nMeanwhile the companion narrates impact, suggests follow-ups, and keeps context aligned for your next session.",
+      "body": "system routes requests to the right services,handles transformations and workers take on asynchronous enrichment.\nMeanwhile the companion narrates impact, suggests follow-ups, and keeps context aligned for your next session.",
       "items": [
         {
           "title": "Intent-aware routing",
-          "body": "Requests flow through FastAPI services that understand user roles, data sensitivity, and cost constraints before touching any storage or API."
+          "body": "Requests flow through system services that understand user roles, data sensitivity, and cost constraints before touching any storage or API."
         },
         {
           "title": "Edge analytics",
